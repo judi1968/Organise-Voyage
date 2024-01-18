@@ -20,6 +20,7 @@ public class VoyageDurre {
     public Durre getDurre() {
         return durre;
     }
+    
     public Voyage getVoyage() {
         return voyage;
     }
@@ -64,6 +65,7 @@ public class VoyageDurre {
                     i++;
                 }
             }
+            
 			statement.close();
 			
 		}catch (Exception e) {

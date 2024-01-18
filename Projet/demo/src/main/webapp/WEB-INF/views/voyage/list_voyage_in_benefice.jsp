@@ -1,3 +1,8 @@
+<%@ page import="judi.example.demo.Models.DataObject.ResultatVoyageDurrePrixBenefice" %>
+
+<%
+ResultatVoyageDurrePrixBenefice[] resultatVoyageDurrePrixBenefices = (ResultatVoyageDurrePrixBenefice[])request.getAttribute("resultatVoyageDurrePrixBenefices");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -202,14 +207,7 @@
                   <div class="col-sm-10"  style="margin-top: 5%;" >
   
                       <form style="margin-top: 5%;" >
-                            
-                          <select class="form-select" aria-label="Default select example" style="width: 15%;" name="">
-                              <option selected>Tout</option>
-                              <option value="1">One</option>
-                              <option value="2">Two</option>
-                              <option value="3">Three</option>
-                          </select>
-  
+                        
                           <label for="inputText" class="col-sm-2 col-form-label">minimum</label>
                               <div class="col-sm-10">
                                 <input type="number" class="form-control" style="width: 20%;" name="min">
@@ -232,7 +230,6 @@
                 <table class="table table-striped" style="margin-top: 5%;">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
                       <th scope="col">Nom voyage</th>
                       <th scope="col">Duree</th>
                       <th scope="col">Prix total des activitees</th>
@@ -243,17 +240,16 @@
                       
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody>    
                     <tr>
-                      <th scope="row">1</th>
-                      <td>voyage</td>
-                      <td>long</td>
-                      <td>2000 Ar</td>
-                      <td>3000 Ar</td>
-                      <td>5000 Ar</td>
-                      
+                      <% for (ResultatVoyageDurrePrixBenefice resultatVoyageDurrePrixBenefice : resultatVoyageDurrePrixBenefices) { %>
+                        <td><%= resultatVoyageDurrePrixBenefice.getVoyageDurre().getVoyage().getNom_voyage()  %>
+                        <td><%= resultatVoyageDurrePrixBenefice.getVoyageDurre().getDurre().getNom()  %>
+                        <td><%= resultatVoyageDurrePrixBenefice.getPrix_voyageDurre() %>
+                        <td><%= resultatVoyageDurrePrixBenefice.getPrix_depense() %>
+                        <td><%= resultatVoyageDurrePrixBenefice.getBenefice() %>
+                      <% } %>
                     </tr>
-                    
                   </tbody>
                 </table>
                 <!-- End Table with stripped rows -->

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import judi.example.demo.Models.DataObject.ResultatVoyageDurrePrixBenefice;
 import judi.example.demo.Models.DataObject.Voyage_prix;
 import judi.example.demo.Models.Objects.Activite;
 import judi.example.demo.Models.Objects.ActiviteVoyage;
@@ -84,9 +85,18 @@ public class VoyageController {
         }
     }
     @GetMapping("/list_voyage_in_benefice")
-    public String list_voyage_in_benefice(){
-        return "voyage/list_voyage_in_benefice";
+    public String listVoyageInBenefice(@RequestParam(defaultValue = "0") String max, @RequestParam(defaultValue = "0") String min,Model model) {
+        try {    
+            ResultatVoyageDurrePrixBenefice[] resultatVoyageDurrePrixBenefices = ResultatVoyageDurrePrixBenefice.getAlResultatVoyageDurrePrixBeneficesInIntervallePrix(Double.parseDouble(min), Double.parseDouble(max), null);
+            model.addAttribute("resultatVoyageDurrePrixBenefices", resultatVoyageDurrePrixBenefices);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }finally{
+            return "voyage/list_voyage_in_benefice";
+        }
     }
+
     
     @GetMapping("/createVoyage")
     public String createVoyage(Model model) throws Exception{
