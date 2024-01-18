@@ -226,15 +226,15 @@ ResultatVoyageDurrePrixBenefice[] resultatVoyageDurrePrixBenefices = (ResultatVo
                     </tr>
                   </thead>
                   <tbody>    
-                    <tr>
-                      <% for (ResultatVoyageDurrePrixBenefice resultatVoyageDurrePrixBenefice : resultatVoyageDurrePrixBenefices) { %>
+                    <% for (ResultatVoyageDurrePrixBenefice resultatVoyageDurrePrixBenefice : resultatVoyageDurrePrixBenefices) { %>
+                      <tr>
                         <td><%= resultatVoyageDurrePrixBenefice.getVoyageDurre().getVoyage().getNom_voyage()  %>
                         <td><%= resultatVoyageDurrePrixBenefice.getVoyageDurre().getDurre().getNom()  %>
                         <td><%= resultatVoyageDurrePrixBenefice.getPrix_voyageDurre() %>
                         <td><%= resultatVoyageDurrePrixBenefice.getPrix_depense() %>
                         <td><%= resultatVoyageDurrePrixBenefice.getBenefice() %>
+                        </tr>
                       <% } %>
-                    </tr>
                   </tbody>
                 </table>
                 <!-- End Table with stripped rows -->
