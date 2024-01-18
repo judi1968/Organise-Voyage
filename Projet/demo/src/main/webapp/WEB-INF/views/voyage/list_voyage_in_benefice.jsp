@@ -185,8 +185,6 @@ ResultatVoyageDurrePrixBenefice[] resultatVoyageDurrePrixBenefices = (ResultatVo
     <div class="pagetitle">
       <h1>Accueil</h1>
     </div><!-- End Page Title -->
-
-    
     <section class="section dashboard">
         <div class="row">
           <div class="row">
@@ -196,36 +194,23 @@ ResultatVoyageDurrePrixBenefice[] resultatVoyageDurrePrixBenefices = (ResultatVo
           </div><!-- End Page Title -->
           <div class="col-lg-3"></div>
           </div>
-  
-         
-         
               <!-- <h1 style="margin-top: 25%">Creer</h1> -->
               <section class="section">
                   <div class="card">
               <div class="card-body">
-  
                   <div class="col-sm-10"  style="margin-top: 5%;" >
-  
                       <form style="margin-top: 5%;" >
-                        
                           <label for="inputText" class="col-sm-2 col-form-label">minimum</label>
                               <div class="col-sm-10">
                                 <input type="number" class="form-control" style="width: 20%;" name="min">
                               </div>
-  
                           <label for="inputEmail" class="col-sm-2 col-form-label">maximum</label>
                               <div class="col-sm-10">
                                 <input type="number" class="form-control" style="width: 20%;" name="max">
                               </div>
-                      
                             <button type="submit" class="btn btn-primary"   style="width: 20%;margin-top: 2%;">ok</button>
-  
                       </form>
-                      
-  
-  
-                    </div>
-  
+                    </div>  
                 <!-- Table with stripped rows -->
                 <table class="table table-striped" style="margin-top: 5%;">
                   <thead>
