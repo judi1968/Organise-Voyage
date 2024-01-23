@@ -1,3 +1,9 @@
+<%@ page import="judi.example.demo.Models.DataObject.EmployeTaux" %>
+<%
+EmployeTaux[] employes= (EmployeTaux[])request.getAttribute("employes");
+
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,8 +62,8 @@
 
   </header><!-- End Header -->
 
-   <!-- ======= Sidebar ======= -->
-   <aside id="sidebar" class="sidebar">
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -178,70 +184,71 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Employer</h1>
+      <h1>Accueil</h1>
     </div><!-- End Page Title -->
-      <!-- <h1 style="margin-top: 25%">Creer</h1> -->
-      <section class="section">
+
+  
+    <section class="section dashboard">
+      <div class="row">
         <div class="row">
-            <div class="col-lg-3"></div>
-          <div class="col-lg-6">
-  
-            <div class="card" style="margin-top: 0%;">
-              <div class="card-body">
-                <h5 class="card-title">Creer employe</h5>
-  
-                <!-- General Form Elements -->
-                <form method="post" action="traiteCreationEmployer">
-                  
-                 <div class="row mb-3">
-                <div class="row mb-3">
-                    <label for="inputText" class="col-sm-2 col-form-label">Fonction</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" name="nom_employer">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="inputText" class="col-sm-2 col-form-label">Montant</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control" name="prix">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="inputText" class="col-sm-4 col-form-label">Date d'embauche</label>
-                    <div class="col-sm-8">
-                      <input type="date" class="form-control" name="date">
-                    </div>
-                  </div>
-              </div>
-
-              <div class="row mb-3">
-              <label class="col-sm-2 col-form-label"></label>
-              <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">creer</button>
-              </div>
-            </div>
-                     
-                    
-                  
-                  <div class="row mb-3">
-                    <div class="col-sm-10">
-           
-  
-                    </div>
-                  </div>
-
-                </form><!-- End General Form Elements -->
-  
-              </div>
-            </div>
-  
-          </div>
-          <div class="col-lg-3">
-          </div>
+        <div class="col-lg-3"></div>
+        <div class="pagetitle col-lg-6" style="margin-top: 5%; margin-left: 2%;">
+          <h1>Liste employe avec niveau et taux horaire</h1>
+        </div><!-- End Page Title -->
+        <div class="col-lg-3"></div>
         </div>
-      </section>
+
+            <!-- <h1 style="margin-top: 25%">Creer</h1> -->
+            <section class="section">
+                <div class="card">
+            <div class="card-body">
+
+                <div class="col-sm-10"  style="margin-top: 5%;" >
+
+                    <form style="margin-top: 5%;" action="/listByNiveau">
+
+                        <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
+                            <div class="col-sm-10">
+                              <input type="date" class="form-control" style="width: 20%;" name="dates">
+                            </div>
+                    
+                          <button type="submit" class="btn btn-primary"   style="width: 20%;margin-top: 2%;">ok</button>
+
+                    </form>
+
+                </div>
+
+              <!-- Table with stripped rows -->
+              <table class="table table-striped" style="margin-top: 5%;">
+                <thead>
+                  <tr>
+                    <th scope="col">Nom Employe</th>
+                    <th scope="col">Fonction</th>
+                    <th scope="col">Niveau</th>
+                    <th scope="col">Date d'embauche</th>
+                    <th scope="col">Taux horaire</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for (EmployeTaux employeTaux : employes) { %>
+                    <tr>
+                      <td><%= employeTaux.getNomEmploye() %>
+                      <td><%= employeTaux.getFonction() %>
+                      <td><%= employeTaux.getNiveau() %>
+                      <td><%= employeTaux.getDate() %>
+                      <td><%= employeTaux.getTaux() %>
+                  </tr>
+                  <% } %>   
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+              </section>
+      </div>
+    </section>
+
 
   </main><!-- End #main -->
 

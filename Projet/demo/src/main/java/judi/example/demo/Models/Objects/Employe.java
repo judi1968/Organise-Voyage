@@ -1,14 +1,25 @@
 package judi.example.demo.Models.Objects;
 import judi.example.demo.Models.DatabaseConnection.ConnectionPostgres;
+import judi.example.demo.Models.Utils.DateHeure;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 
 public class Employe {
     int id_employe;
     String fonction_designantion;
     Double prix;
+    DateHeure dateEmbauche;
+    public void setDateEmbauche(DateHeure dateEmbauche) {
+        this.dateEmbauche = dateEmbauche;
+    }
+    public DateHeure getDateEmbauche() {
+        return dateEmbauche;
+    }
 
     public int getId_employe() {
         return id_employe;
@@ -46,7 +57,7 @@ public class Employe {
 
     //insert
     public void insertNewEmploye(Connection connection) throws Exception{
-        String query = "INSERT INTO employe ( fonction_designation, prix) VALUES ( ?, ? );";
+        String query = "INSERT INTO employe ( fonction_designation, prix,date_embauche) VALUES ( ?, ? , ?);";
         PreparedStatement statement = null;
 		ResultSet resultset= null;
 		boolean statementOpen = false;
@@ -62,6 +73,7 @@ public class Employe {
 			statement = connection.prepareStatement(query);
             statement.setString(1, this.getFonction_designantion());
             statement.setDouble(2, this.getPrix());
+            statement.setTimestamp(3, Timestamp.valueOf(LocalDateTime.of(dateEmbauche.getDate(), dateEmbauche.getHeure())));
 
 			statementOpen = true;
             
@@ -191,6 +203,62 @@ public class Employe {
         return emp;
     }
 
+    public static Employe[] getAllEmployerWithTauxHorraireAndNiveau(DateHeure dateDonne,Connection connection) throws Exception{
+        String query = "select *,"+dateDonne.getDateTimeString()+"-date_embauche nombre_jours from employe where date_embauche< ?";
+       Employe[] employes;
+       int size = 0;
+       PreparedStatement statement = null;
+       ResultSet resultset= null;
+       boolean statementOpen = false;
+       boolean resultsetOpen = false;
+       boolean closeable = false;
+       try {
+           if(connection==null) {
+               connection = ConnectionPostgres.connect("localhost",5432,"voyage","postgres","mdpprom15");
+               connection.setAutoCommit(false);
+               closeable = true;
+           }
+           
+           statement = connection.prepareStatement(query);
+           statementOpen = true;
+           statement.setTimestamp(3, Timestamp.valueOf(LocalDateTime.of(dateDonne.getDate(), dateDonne.getHeure())));
+           resultset =  statement.executeQuery();
+           
+           while(resultset.next()) {
+               size++;
+           }
+           if(size==0){
+               employes = new Employe[0];
+           }else{
+               employes = new Employe[size];
+               int i = 0;
+               resultset =  statement.executeQuery();
+               while(resultset.next()){
+                   employes[i] = new Employe();
+                   employes[i].setId_employe(resultset.getInt("id_employe"));
+                   employes[i].setFonction_designantion(resultset.getString("fonction_designation"));
+                   employes[i].setPrix(resultset.getDouble("prix"));
 
-
+                    System.out.println(i);
+                   i++;
+               }
+           }
+           statement.close();
+           
+       }catch (Exception e) {
+           throw e;
+       }finally {
+           if(statementOpen) {
+               statement.close();
+           }
+           if(resultsetOpen) {
+               resultset.close();
+           }
+           if(closeable) {
+               connection.commit();
+               connection.close();
+           }
+       }
+       return employes;
+   }
 }
