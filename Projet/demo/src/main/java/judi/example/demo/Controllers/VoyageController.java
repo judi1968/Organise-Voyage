@@ -16,6 +16,7 @@ import judi.example.demo.Models.Objects.Employe;
 import judi.example.demo.Models.Objects.Lieu;
 import judi.example.demo.Models.Objects.Voyage;
 import judi.example.demo.Models.Objects.VoyageDurre;
+import judi.example.demo.Models.Utils.DateHeure;
 
 @Controller
 public class VoyageController {
@@ -65,6 +66,7 @@ public class VoyageController {
             return "employer/addToVoyage";
         } catch (Exception e) {
             // TODO: handle exception
+            e.printStackTrace();
             return "index";
         }
     }
@@ -212,14 +214,18 @@ public class VoyageController {
     }   
     
     @PostMapping("/addEmployerToVoyageTraitement")
-    public String addEmployerToVoyageTraitement(@RequestParam String id_voyage,@RequestParam int id_employe, Model model){
+    public String addEmployerToVoyageTraitement(@RequestParam String id_voyage,@RequestParam int id_employe,@RequestParam String hour, Model model){
         try {
             String[] idString = id_voyage.split(";");
             int idv = Integer.parseInt(idString[0]);
             int idd = Integer.parseInt(idString[1]);
+            System.out.println(hour);
+            DateHeure dateHeure = new DateHeure();
+            dateHeure.setTime(hour.concat(":00"));
+            double tempsDouble = dateHeure.getDoubleTime();
             VoyageDurre vd = VoyageDurre.getVoyageByIdVoyageAndIdDurre(idv,idd,null);
             Employe emp = Employe.getEmployeById(id_employe, null);
-            vd.insertEmployerToVoyageDurre(emp,null);
+            vd.insertEmployerToVoyageDurre(emp,tempsDouble,null);
         } catch (NumberFormatException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -227,7 +233,7 @@ public class VoyageController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return addEmployerToVoyage(null);
+        return addEmployerToVoyage(model);
     }    
     
 }

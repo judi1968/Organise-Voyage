@@ -134,10 +134,10 @@ public class VoyageDurre {
         return voyageDurre;
     }
 
-    public void insertEmployerToVoyageDurre(Employe emp, Connection connection) throws Exception
+    public void insertEmployerToVoyageDurre(Employe emp,double temps ,Connection connection) throws Exception
     {
         // System.out.println("igi");
-        String query = "INSERT INTO voyage_durre_employer(id_voyage_fk,id_durre_fk,id_employe_fk) values(?,?,?)";
+        String query = "INSERT INTO voyage_durre_employer(id_voyage_fk,id_durre_fk,id_employe_fk,durre_number) values(?,?,?,?)";
 
         PreparedStatement statement = null;
         boolean statementOpen = false;
@@ -154,7 +154,7 @@ public class VoyageDurre {
             statement.setInt(1, this.getVoyage().getId_voyage());
             statement.setInt(2, this.getDurre().getId());
             statement.setInt(3, emp.getId_employe());
-
+            statement.setDouble(4, temps);
 
         
 			statementOpen = true;

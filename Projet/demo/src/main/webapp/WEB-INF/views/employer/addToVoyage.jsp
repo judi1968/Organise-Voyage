@@ -223,7 +223,12 @@ VoyageDurre[] voyageDurres= (VoyageDurre[])request.getAttribute("voyageDurres");
 
 
               </div>
-
+              <div class="row mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">Heure de travail</label>
+                <div class="col-sm-10">
+                  <input type="time" value="00:00" class="form-control"name="hour">
+                </div>
+              </div>
               <div class="row mb-3">
               <label class="col-sm-2 col-form-label"></label>
               <div class="col-sm-10">
