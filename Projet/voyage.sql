@@ -44,7 +44,7 @@ CREATE  TABLE billet_activite_entrant (
 CREATE  TABLE billet_activite_sortant ( 
 	id_activite_fk       integer  NOT NULL  ,
 	quantite             integer    ,
-	CONSTRAINT fk_billet_activite_entrant_0 FOREIGN KEY ( id_activite_fk ) REFERENCES activite( id_activite )   
+	CONSTRAINT fk_billet_activite_entrant FOREIGN KEY ( id_activite_fk ) REFERENCES activite( id_activite )   
  );
 
 CREATE  TABLE bouquet ( 
@@ -101,6 +101,7 @@ CREATE  TABLE voyage_durre_employer (
 	id_voyage_fk         integer    ,
 	id_durre_fk          integer    ,
 	id_employe_fk        integer    ,
+	durre_number         double precision    ,
 	CONSTRAINT fk_voyage_durre_employer_durre FOREIGN KEY ( id_durre_fk ) REFERENCES durre( id_duree )   ,
 	CONSTRAINT fk_voyage_durre_employer FOREIGN KEY ( id_employe_fk ) REFERENCES employe( id_employe )   ,
 	CONSTRAINT fk_voyage_durre_employers FOREIGN KEY ( id_voyage_fk ) REFERENCES voyage( id_voyage )   
@@ -149,7 +150,7 @@ CREATE VIEW v_prix_activite_par_voyage_durre AS SELECT v.id_voyage_fk,
 
 CREATE VIEW v_prix_employe_par_voyage_durre AS SELECT vd.id_voyage_fk,
     vd.id_durre_fk,
-    sum(e.prix) AS prix_employe
+    sum((e.prix * vd.durre_number)) AS prix_employe
    FROM (voyage_durre_employer vd
      JOIN employe e ON ((vd.id_employe_fk = e.id_employe)))
   GROUP BY vd.id_voyage_fk, vd.id_durre_fk;
@@ -213,6 +214,13 @@ CREATE VIEW v_voyage_durre_prix_depense AS SELECT prix_employe_actvite_dans_voya
     (prix_employe_actvite_dans_voyage_durre.prix_employe + prix_employe_actvite_dans_voyage_durre.prix_tout_activite) AS prix_depense
    FROM prix_employe_actvite_dans_voyage_durre;
 
+CREATE VIEW v_voyage_durre_prix_voyage_et_prix_depense_and_benefice AS SELECT v_voyage_durre_prix_voyage_et_prix_depense_base.id_voyage_fk,
+    v_voyage_durre_prix_voyage_et_prix_depense_base.id_durre_fk,
+    v_voyage_durre_prix_voyage_et_prix_depense_base.prix_voyage,
+    v_voyage_durre_prix_voyage_et_prix_depense_base.prix_depense,
+    (v_voyage_durre_prix_voyage_et_prix_depense_base.prix_voyage - v_voyage_durre_prix_voyage_et_prix_depense_base.prix_depense) AS benefice
+   FROM v_voyage_durre_prix_voyage_et_prix_depense_base;
+
 CREATE VIEW v_voyage_durre_prix_voyage_et_prix_depense_base AS SELECT COALESCE(pvd.id_voyage_fk, vdp.id_voyage_fk) AS id_voyage_fk,
     COALESCE(pvd.id_durre_fk, vdp.id_durre_fk) AS id_durre_fk,
     COALESCE(pvd.prix, (0)::double precision) AS prix_voyage,
@@ -244,3 +252,47 @@ CREATE VIEW voyage_prix_base AS SELECT v_voyage_bouquet_activite.id_voyage,
    FROM (v_voyage_bouquet_activite
      JOIN activite_prix ON ((activite_prix.id_activite_fk = v_voyage_bouquet_activite.id_activite)));
 
+INSERT INTO activite( id_activite, nom_activite ) VALUES ( 1, 'Football');
+INSERT INTO activite( id_activite, nom_activite ) VALUES ( 2, 'Basket-ball');
+INSERT INTO activite_prix( id_activite_fk, prix, etat ) VALUES ( 1, 3000.0, 5);
+INSERT INTO activite_prix( id_activite_fk, prix, etat ) VALUES ( 1, 4000.0, 10);
+INSERT INTO activite_prix( id_activite_fk, prix, etat ) VALUES ( 2, 4500.0, 5);
+INSERT INTO activite_prix( id_activite_fk, prix, etat ) VALUES ( 2, 1000.0, 10);
+INSERT INTO activite_voyage( id_voyage_fk, id_activite_fk, id_durre_fk ) VALUES ( 1, 2, 1);
+INSERT INTO activite_voyage( id_voyage_fk, id_activite_fk, id_durre_fk ) VALUES ( 2, 2, 2);
+INSERT INTO activite_voyage( id_voyage_fk, id_activite_fk, id_durre_fk ) VALUES ( 2, 2, 1);
+INSERT INTO activite_voyage( id_voyage_fk, id_activite_fk, id_durre_fk ) VALUES ( 2, 2, 2);
+INSERT INTO activite_voyage( id_voyage_fk, id_activite_fk, id_durre_fk ) VALUES ( 2, 2, 2);
+INSERT INTO activite_voyage( id_voyage_fk, id_activite_fk, id_durre_fk ) VALUES ( 5, 2, 1);
+INSERT INTO activite_voyage( id_voyage_fk, id_activite_fk, id_durre_fk ) VALUES ( 5, 2, 1);
+INSERT INTO activite_voyage( id_voyage_fk, id_activite_fk, id_durre_fk ) VALUES ( 5, 2, 3);
+INSERT INTO activite_voyage( id_voyage_fk, id_activite_fk, id_durre_fk ) VALUES ( 5, 1, 1);
+INSERT INTO activite_voyage( id_voyage_fk, id_activite_fk, id_durre_fk ) VALUES ( 5, 1, 2);
+INSERT INTO activite_voyage( id_voyage_fk, id_activite_fk, id_durre_fk ) VALUES ( 5, 1, 2);
+INSERT INTO billet_activite_entrant( id_activite_fk, quantite ) VALUES ( 1, 5);
+INSERT INTO billet_activite_entrant( id_activite_fk, quantite ) VALUES ( 1, 5);
+INSERT INTO billet_activite_entrant( id_activite_fk, quantite ) VALUES ( 2, 5);
+INSERT INTO bouquet( id_bouquet, nom_bouquet ) VALUES ( 1, 'bouquet1');
+INSERT INTO bouquet( id_bouquet, nom_bouquet ) VALUES ( 2, 'Premium');
+INSERT INTO durre( id_duree, nom_duree ) VALUES ( 1, 'Court');
+INSERT INTO durre( id_duree, nom_duree ) VALUES ( 2, 'Moyen');
+INSERT INTO durre( id_duree, nom_duree ) VALUES ( 3, 'Long');
+INSERT INTO employe( id_employe, fonction_designation, prix ) VALUES ( 3, 'chauffeur', 4500.0);
+INSERT INTO employe( id_employe, fonction_designation, prix ) VALUES ( 4, 'guide', 3000.0);
+INSERT INTO type_lieu( id_type_lieu, nom_type_lieu ) VALUES ( 1, 'Nationale');
+INSERT INTO type_lieu( id_type_lieu, nom_type_lieu ) VALUES ( 2, 'International');
+INSERT INTO activite_bouquet( id_activite_fk, id_bouquet_fk ) VALUES ( 1, 1);
+INSERT INTO activite_bouquet( id_activite_fk, id_bouquet_fk ) VALUES ( 2, 2);
+INSERT INTO activite_bouquet( id_activite_fk, id_bouquet_fk ) VALUES ( 2, 1);
+INSERT INTO activite_bouquet( id_activite_fk, id_bouquet_fk ) VALUES ( 1, 2);
+INSERT INTO lieu( id_lieu, nom_lieu, id_type_lieu_fk ) VALUES ( 1, 'Toamasina', 1);
+INSERT INTO lieu( id_lieu, nom_lieu, id_type_lieu_fk ) VALUES ( 2, 'Antananarivo', 1);
+INSERT INTO lieu( id_lieu, nom_lieu, id_type_lieu_fk ) VALUES ( 3, 'Paris', 2);
+INSERT INTO voyage( id_voyage, nom_voyage, id_lieu_fk, id_bouquet_fk ) VALUES ( 1, '2', 1, 2);
+INSERT INTO voyage( id_voyage, nom_voyage, id_lieu_fk, id_bouquet_fk ) VALUES ( 2, 'Vacance de Noel', 1, 2);
+INSERT INTO voyage( id_voyage, nom_voyage, id_lieu_fk, id_bouquet_fk ) VALUES ( 3, 'Vacance de Noel', 1, 1);
+INSERT INTO voyage( id_voyage, nom_voyage, id_lieu_fk, id_bouquet_fk ) VALUES ( 4, 'Partie du fin anne', 3, 2);
+INSERT INTO voyage( id_voyage, nom_voyage, id_lieu_fk, id_bouquet_fk ) VALUES ( 5, 'Voyage du sud', 2, 2);
+INSERT INTO voyage_durre_employer( id_voyage_fk, id_durre_fk, id_employe_fk, durre_number ) VALUES ( 1, 1, 3, 2.0);
+INSERT INTO voyage_durre_employer( id_voyage_fk, id_durre_fk, id_employe_fk, durre_number ) VALUES ( 1, 1, 3, 1.0833333333333333);
+INSERT INTO prix_voyage_durre( id_voyage_fk, id_durre_fk, prix ) VALUES ( 5, 2, 10000.0);
