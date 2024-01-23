@@ -64,8 +64,8 @@ VoyageDurre[] voyageDurres= (VoyageDurre[])request.getAttribute("voyageDurres");
 
   </header><!-- End Header -->
 
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+   <!-- ======= Sidebar ======= -->
+   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -150,6 +150,16 @@ VoyageDurre[] voyageDurres= (VoyageDurre[])request.getAttribute("voyageDurres");
               <i class="bi bi-circle"></i><span>Vendre billet</span>
             </a>
           </li>
+          <li>
+            <a href="/ajouter_prix_voyage">
+              <i class="bi bi-circle"></i><span>Ajouter prix</span>
+            </a>
+          </li>
+          <li>
+            <a href="/list_voyage_in_benefice">
+              <i class="bi bi-circle"></i><span>Rechercher un voyage par son benefice</span>
+            </a>
+          </li>
         </ul>
       </li>
       <li class="nav-item">
@@ -160,6 +170,11 @@ VoyageDurre[] voyageDurres= (VoyageDurre[])request.getAttribute("voyageDurres");
           <li>
             <a href="/creerEmployer">
               <i class="bi bi-circle"></i><span>Creer</span>
+            </a>
+          </li>
+          <li>
+            <a href="/addEmployerToVoyage">
+              <i class="bi bi-circle"></i><span>Ajouter a un voyage</span>
             </a>
           </li>
         </ul>

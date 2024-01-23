@@ -69,7 +69,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.jsp">
+        <a class="nav-link " href="/">
           <i class="bi bi-house"></i>
           <span>Accueil</span>
         </a>
@@ -86,6 +86,11 @@
             </a>
           </li>
           <li>
+            <a href="/addActivite">
+              <i class="bi bi-circle"></i><span>Ajouter</span>
+            </a>
+          </li>
+          <li>
             <a href="listActivite">
               <i class="bi bi-circle"></i><span>Liste</span>
             </a>
@@ -93,6 +98,11 @@
           <li>
             <a href="searchActiviteToVoyage">
               <i class="bi bi-circle"></i><span>Chercher dans un voyage</span>
+            </a>
+          </li>
+          <li>
+            <a href="updateActivitePrix">
+              <i class="bi bi-circle"></i><span>Modifier Prix</span>
             </a>
           </li>
         </ul>
@@ -115,40 +125,6 @@
         </ul>
       </li><!-- End Components Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#lieu-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Lieu</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="lieu-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Creer</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle"></i><span>Liste</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#endroit-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Endroit</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="endroit-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Creer</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle"></i><span>Liste</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
-      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#voyage-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Voyage</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -161,6 +137,43 @@
           <li>
             <a href="/list_voyage">
               <i class="bi bi-circle"></i><span>Liste</span>
+            </a>
+          </li>
+          <li>
+            <a href="/form_search_activite_prix">
+              <i class="bi bi-circle"></i><span>Chercher par intervalle de prix activite</span>
+            </a>
+          </li>
+          <li>
+            <a href="/vendre_voyage">
+              <i class="bi bi-circle"></i><span>Vendre billet</span>
+            </a>
+          </li>
+          <li>
+            <a href="/ajouter_prix_voyage">
+              <i class="bi bi-circle"></i><span>Ajouter prix</span>
+            </a>
+          </li>
+          <li>
+            <a href="/list_voyage_in_benefice">
+              <i class="bi bi-circle"></i><span>Rechercher un voyage par son benefice</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#employer-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Employer</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="employer-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/creerEmployer">
+              <i class="bi bi-circle"></i><span>Creer</span>
+            </a>
+          </li>
+          <li>
+            <a href="/addEmployerToVoyage">
+              <i class="bi bi-circle"></i><span>Ajouter a un voyage</span>
             </a>
           </li>
         </ul>
