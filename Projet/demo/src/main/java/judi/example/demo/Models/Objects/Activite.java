@@ -362,7 +362,7 @@ public class Activite{
     }
 
 	public void addActiviteToStock(int quantite,Connection connection) throws Exception{
-        String query = "INSERT INTO billet_activite_entrant( id_activite_fk, quantite) VALUES ( ?, ? )";
+        String query = "INSERT INTO stock_billet_activite( id_activite_fk, nb_entrant,nb_sortant) VALUES ( ?, ? ,0)";
         int size = 0;
         PreparedStatement statement = null;
 		ResultSet resultset= null;
@@ -401,7 +401,7 @@ public class Activite{
     }
 
 	public void addActiviteSortant(int quantite,Connection connection) throws Exception{
-        String query = "INSERT INTO billet_activite_sortant( id_activite_fk, quantite) VALUES ( ?, ? )";
+        String query = "INSERT INTO stock_billet_activite( id_activite_fk, nb_entrant,nb_sortant) VALUES ( ?, 0 ,? )";
         int size = 0;
         PreparedStatement statement = null;
 		ResultSet resultset= null;

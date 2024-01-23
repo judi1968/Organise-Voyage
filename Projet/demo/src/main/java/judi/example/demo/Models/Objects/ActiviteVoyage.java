@@ -83,7 +83,7 @@ public class ActiviteVoyage {
     // 
     
     public static ActiviteVoyage[] getAllActiviteVoyage(Connection connection) throws Exception{
-        String query = " select * from v_voyage_durre";
+        String query = "select * from v_voyage_durre order by id_voyage_fk asc,id_durre_fk asc";
         ActiviteVoyage[] activites;
         int size = 0;
         PreparedStatement statement = null;
