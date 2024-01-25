@@ -214,183 +214,152 @@ double pourcentageFemme = (double)request.getAttribute("pourcentageFemme");
     </div><!-- End Page Title -->
 
         <!-- <h1 style="margin-top: 25%">Creer</h1> -->
+
         <section class="section">
             <div class="row">
-                <div class="col-lg-3"></div>
-              <div class="col-lg-12">
-      
-                <div class="card" style="margin-top: 0%;">
-                  <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    
-                    <!-- TOTAL  -->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sales-card">
-          
-                          
-          
-                          <div class="card-body">
-                            <h5 class="card-title">Nombre Total</h5>
-          
-                            <div class="d-flex align-items-center">
-                              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                <i class="bi bi-cart"></i>
-                              </div>
-                              <div class="ps-3">
-                                <h6><%= nombreTotale %></h6>          
-                              </div>
-                            </div>
-                          </div>
-          
-                        </div>
-                      </div><!-- End Total Card -->
+                <div class="col-md-12">
+                    <div class="card" style="margin-top: 0%;">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <div class="row">
+                            <!-- TOTAL  -->
+                            <div class="col-md-4">
+                                <div class="card info-card sales-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Nombre Total</h5>
+                
+                                    <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-cart"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6><%= nombreTotale %> personne</h6> 
+                                        <span class="text-success small pt-1 fw-bold">. </span> 
+         
+                                    </div>
+                                    </div>
+                                </div>
+                
+                                </div>
+                            </div><!-- End Total Card -->
 
-                    <!-- HOMME  -->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sales-card">
-          
-                          
-          
-                          <div class="card-body">
-                            <h5 class="card-title">Nombre d'homme</h5>
-          
-                            <div class="d-flex align-items-center">
-                              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                <i class="bi bi-cart"></i>
-                              </div>
-                              <div class="ps-3">
-                                <h6><%= nombreHomme %></h6>
-                                <span class="text-success small pt-1 fw-bold"><%= pourcentageHomme %></span> 
-          
-                              </div>
-                            </div>
-                          </div>
-          
-                        </div>
-                      </div><!-- End Homme Card -->
+                            <!-- HOMME  -->
+                            <div class="col-md-4">
+                                <div class="card info-card sales-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Nombre d'homme</h5>
+                
+                                    <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-cart"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6><%= nombreHomme %> personne</h6>
+                                        <span class="text-success small pt-1 fw-bold"><%= pourcentageHomme %> %</span> 
+                
+                                    </div>
+                                    </div>
+                                </div>
+                
+                                </div>
+                            </div><!-- End Homme Card -->
 
-                    <!-- FEMME  -->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sales-card">
-          
-                          
-          
-                          <div class="card-body">
-                            <h5 class="card-title">Nombre de femme</h5>
-          
-                            <div class="d-flex align-items-center">
-                              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                <i class="bi bi-cart"></i>
-                              </div>
-                              <div class="ps-3">
-                                <h6><%= nombreFemme %></h6>
-                                <span class="text-success small pt-1 fw-bold"><%= pourcentageFemme %></span> 
-          
-                              </div>
+                            <!-- FEMME  -->
+                            <div class="col-md-4">
+                                <div class="card info-card sales-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Nombre de femme</h5>
+                
+                                    <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-cart"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6><%= nombreFemme %> personnes</h6>
+                                        <span class="text-success small pt-1 fw-bold"><%= pourcentageFemme %> %</span> 
+                
+                                    </div>
+                                    </div>
+                                </div>
+                
+                                </div>
+                            </div><!-- End Femme Card -->
                             </div>
-                          </div>
-          
                         </div>
-                      </div><!-- End Femme Card -->
-                      <input type="hidden" value="<%= pourcentageHomme %>" id="pourcentageHomme">
-                      <input type="hidden" value="<%= pourcentageFemme %>" id="pourcentageFemme">
-
-                    <!-- CHART -->
-                    <div class="card-body pb-0">
-                        <h5 class="card-title">Chart</h5>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <input type="hidden" value="<%= nombreHomme %>" id="nombreHomme">
+                    <input type="hidden" value="<%= nombreFemme %>" id="nombreFemme">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"></h5>
           
-                        <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-          
+                        <!-- Pie Chart -->
+                        <canvas id="pieChart" style="max-height: 400px;"></canvas>
                         <script>
                           document.addEventListener("DOMContentLoaded", () => {
-                            const pourcentageHomme = document.getElementById("pourcentageHomme").value
-                            const pourcentageFemme = document.getElementById("pourcentageFemme").value
-
-                            echarts.init(document.querySelector("#trafficChart")).setOption({
-                              tooltip: {
-                                trigger: 'item'
-                              },
-                              legend: {
-                                top: '5%',
-                                left: 'center'
-                              },
-                              series: [{
-                                name: 'Access From',
-                                type: 'pie',
-                                radius: [pourcentageHomme+'%', pourcentageFemme+'%'],
-                                avoidLabelOverlap: false,
-                                label: {
-                                  show: true,
-                                  position: 'center'
-                                },
-                                emphasis: {
-                                  label: {
-                                    show: true,
-                                    fontSize: '18',
-                                    fontWeight: 'bold'
-                                  }
-                                },
-                                labelLine: {
-                                  show: true
-                                },
-                                data: [{
-                                    value: pourcentageHomme,
-                                    name: 'homme'
-                                  },
-                                  {
-                                    value: pourcentageFemme,
-                                    name: 'femme'
-                                  }
-                                ]
-                              }]
+                            const nombreHomme = document.getElementById("nombreHomme").value;
+                            const nombreFemme = document.getElementById("nombreFemme").value;
+        
+                            new Chart(document.querySelector('#pieChart'), {
+                              type: 'pie',
+                              data: {
+                                labels: [
+                                  'Homme',
+                                  'Femme'
+                                ],
+                                datasets: [{
+                                  label: 'My First Dataset',
+                                  data: [nombreHomme,nombreFemme],
+                                  backgroundColor: [
+                                      'rgb(54, 162, 235)',
+                                    'rgb(255, 99, 132)'
+                                  ],
+                                  hoverOffset: 4
+                                }]
+                              }
                             });
                           });
                         </script>
+                        <!-- End Pie CHart -->
           
                       </div>
-
-                      <!-- LISTE -->
-                      <div class="col-12">
-                        <div class="card top-selling overflow-auto">
-          
-                          <div class="card-body pb-0">
-                            <h5 class="card-title">Liste client</h5>
-          
-                            <table class="table table-borderless">
-                              <thead>
-                                <tr>
-                                  <th scope="col">Nom</th>
-                                  <th scope="col">Prenom</th>
-                                  <th scope="col">Date d'achat</th>
-                                  <th scope="col">Nom voyage</th>
-                                  <th scope="col">Type voyage</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <% for (ClientAchatVoyageDurre clientAchatVoyageDurre2 : clientAchatVoyageDurre) { %>
-                                    <tr>
-                                        <td><%= clientAchatVoyageDurre2.getNom() %> </td>
-                                        <td><%= clientAchatVoyageDurre2.getPrenom() %> </td>
-                                        <td><%= clientAchatVoyageDurre2.getDateAchat().getDateString() %> </td>
-                                        <td><%= clientAchatVoyageDurre2.getVoyageDurre().getVoyage().getNom_voyage() %> </td>
-                                        <td><%= clientAchatVoyageDurre2.getVoyageDurre().getDurre().getNom() %> </td>
-                                    </tr>
-                                <% } %>
-                              </tbody>
-                            </table>
-          
-                          </div>
-          
-                        </div>
-                      </div><!-- End Top Selling -->
-
-                      
-      
-                  </div>
+                    </div>
                 </div>
-      
-              </div>
-              
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+        
+                    <div class="card-body pb-0">
+                        <h5 class="card-title">Liste client</h5>
+        
+                        <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prenom</th>
+                            <th scope="col">Date d'achat</th>
+                            <th scope="col">Nom voyage</th>
+                            <th scope="col">Type voyage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (ClientAchatVoyageDurre clientAchatVoyageDurre2 : clientAchatVoyageDurre) { %>
+                                <tr>
+                                    <td><%= clientAchatVoyageDurre2.getNom() %> </td>
+                                    <td><%= clientAchatVoyageDurre2.getPrenom() %> </td>
+                                    <td><%= clientAchatVoyageDurre2.getDateAchat().getDateString() %> </td>
+                                    <td><%= clientAchatVoyageDurre2.getVoyageDurre().getVoyage().getNom_voyage() %> </td>
+                                    <td><%= clientAchatVoyageDurre2.getVoyageDurre().getDurre().getNom() %> </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                        </table>
+        
+                    </div>
+        
+                    </div>
+                </div><!-- End Top Selling -->        
             </div>
           </section>
 
