@@ -126,9 +126,8 @@ public class ClientAchatVoyageDurre extends Client{
                     clientAchatVoyageDurres[i].setNom(resultset.getString("nom"));
                     clientAchatVoyageDurres[i].setPrenom(resultset.getString("prenom"));
                     clientAchatVoyageDurres[i].setGenre(Genre.getGenreById(resultset.getInt("id_genre_fk"),connection));
-                    //dateHeure
-
-
+                    clientAchatVoyageDurres[i].setDateAchat(new DateHeure(resultset.getString("date_vente")));
+                    i++;
                 }
             }
 			statement.close();
@@ -148,6 +147,141 @@ public class ClientAchatVoyageDurre extends Client{
 			}
 		}
         return clientAchatVoyageDurres;
+    }
+    
+    public static int getCountClientAchat(Connection connection) throws Exception{
+        String query = "select count(*) nombre from v_vente_voyage_to_client";
+        ClientAchatVoyageDurre[] clientAchatVoyageDurres;
+        int size = 0;
+        PreparedStatement statement = null;
+		ResultSet resultset= null;
+		boolean statementOpen = false;
+		boolean resultsetOpen = false;
+		boolean closeable = false;
+		try {
+            if(connection==null) {
+                connection = ConnectionPostgres.connect("localhost",5432,"voyage","postgres","mdpprom15");
+				connection.setAutoCommit(false);
+                closeable = true;
+			}
+			
+			statement = connection.prepareStatement(query);
+
+			statementOpen = true;
+			
+			resultset =  statement.executeQuery();
+			
+			while(resultset.next()) {
+                size = resultset.getInt("nombre");
+			}
+            
+			statement.close();
+			
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			if(statementOpen) {
+				statement.close();
+			}
+			if(resultsetOpen) {
+				resultset.close();
+			}
+			if(closeable) {
+				connection.commit();
+				connection.close();
+			}
+		}
+        return size;
+    }
+      
+    public static int getCountClientHommeAchat(Connection connection) throws Exception{
+        String query = "select count(*) nombre from v_vente_voyage_to_client where id_genre=1";
+        ClientAchatVoyageDurre[] clientAchatVoyageDurres;
+        int size = 0;
+        PreparedStatement statement = null;
+		ResultSet resultset= null;
+		boolean statementOpen = false;
+		boolean resultsetOpen = false;
+		boolean closeable = false;
+		try {
+            if(connection==null) {
+                connection = ConnectionPostgres.connect("localhost",5432,"voyage","postgres","mdpprom15");
+				connection.setAutoCommit(false);
+                closeable = true;
+			}
+			
+			statement = connection.prepareStatement(query);
+
+			statementOpen = true;
+			
+			resultset =  statement.executeQuery();
+			
+			while(resultset.next()) {
+                size = resultset.getInt("nombre");
+			}
+            
+			statement.close();
+			
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			if(statementOpen) {
+				statement.close();
+			}
+			if(resultsetOpen) {
+				resultset.close();
+			}
+			if(closeable) {
+				connection.commit();
+				connection.close();
+			}
+		}
+        return size;
+    }
+           
+    public static int getCountClientFemmeAchat(Connection connection) throws Exception{
+        String query = "select count(*) nombre from v_vente_voyage_to_client where id_genre=2";
+        ClientAchatVoyageDurre[] clientAchatVoyageDurres;
+        int size = 0;
+        PreparedStatement statement = null;
+		ResultSet resultset= null;
+		boolean statementOpen = false;
+		boolean resultsetOpen = false;
+		boolean closeable = false;
+		try {
+            if(connection==null) {
+                connection = ConnectionPostgres.connect("localhost",5432,"voyage","postgres","mdpprom15");
+				connection.setAutoCommit(false);
+                closeable = true;
+			}
+			
+			statement = connection.prepareStatement(query);
+
+			statementOpen = true;
+			
+			resultset =  statement.executeQuery();
+			
+			while(resultset.next()) {
+                size = resultset.getInt("nombre");
+			}
+            
+			statement.close();
+			
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			if(statementOpen) {
+				statement.close();
+			}
+			if(resultsetOpen) {
+				resultset.close();
+			}
+			if(closeable) {
+				connection.commit();
+				connection.close();
+			}
+		}
+        return size;
     }
 
 }

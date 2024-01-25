@@ -1,3 +1,13 @@
+<%@ page import="judi.example.demo.Models.DataObject.ClientAchatVoyageDurre" %>
+<%
+ClientAchatVoyageDurre[] clientAchatVoyageDurre= (ClientAchatVoyageDurre[])request.getAttribute("clientachat");
+int nombreHomme =  (int)request.getAttribute("nombreHomme");
+int nombreFemme =  (int)request.getAttribute("nombreFemme");
+int nombreTotale =  (int)request.getAttribute("nombreTotale");
+double pourcentageHomme = (double)request.getAttribute("pourcentageHomme");
+double pourcentageFemme = (double)request.getAttribute("pourcentageFemme");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -207,7 +217,7 @@
         <section class="section">
             <div class="row">
                 <div class="col-lg-3"></div>
-              <div class="col-lg-6">
+              <div class="col-lg-12">
       
                 <div class="card" style="margin-top: 0%;">
                   <div class="card-body">
@@ -227,9 +237,7 @@
                                 <i class="bi bi-cart"></i>
                               </div>
                               <div class="ps-3">
-                                <h6>145</h6>
-                                <span class="text-success small pt-1 fw-bold">12%</span> 
-          
+                                <h6><%= nombreTotale %></h6>          
                               </div>
                             </div>
                           </div>
@@ -251,8 +259,8 @@
                                 <i class="bi bi-cart"></i>
                               </div>
                               <div class="ps-3">
-                                <h6>145</h6>
-                                <span class="text-success small pt-1 fw-bold">12%</span> 
+                                <h6><%= nombreHomme %></h6>
+                                <span class="text-success small pt-1 fw-bold"><%= pourcentageHomme %></span> 
           
                               </div>
                             </div>
@@ -275,8 +283,8 @@
                                 <i class="bi bi-cart"></i>
                               </div>
                               <div class="ps-3">
-                                <h6>145</h6>
-                                <span class="text-success small pt-1 fw-bold">12%</span> 
+                                <h6><%= nombreFemme %></h6>
+                                <span class="text-success small pt-1 fw-bold"><%= pourcentageFemme %></span> 
           
                               </div>
                             </div>
@@ -284,6 +292,8 @@
           
                         </div>
                       </div><!-- End Femme Card -->
+                      <input type="hidden" value="<%= pourcentageHomme %>" id="pourcentageHomme">
+                      <input type="hidden" value="<%= pourcentageFemme %>" id="pourcentageFemme">
 
                     <!-- CHART -->
                     <div class="card-body pb-0">
@@ -293,6 +303,9 @@
           
                         <script>
                           document.addEventListener("DOMContentLoaded", () => {
+                            const pourcentageHomme = document.getElementById("pourcentageHomme").value
+                            const pourcentageFemme = document.getElementById("pourcentageFemme").value
+
                             echarts.init(document.querySelector("#trafficChart")).setOption({
                               tooltip: {
                                 trigger: 'item'
@@ -304,10 +317,10 @@
                               series: [{
                                 name: 'Access From',
                                 type: 'pie',
-                                radius: ['40%', '70%'],
+                                radius: [pourcentageHomme+'%', pourcentageFemme+'%'],
                                 avoidLabelOverlap: false,
                                 label: {
-                                  show: false,
+                                  show: true,
                                   position: 'center'
                                 },
                                 emphasis: {
@@ -318,14 +331,14 @@
                                   }
                                 },
                                 labelLine: {
-                                  show: false
+                                  show: true
                                 },
                                 data: [{
-                                    value: 1048,
+                                    value: pourcentageHomme,
                                     name: 'homme'
                                   },
                                   {
-                                    value: 735,
+                                    value: pourcentageFemme,
                                     name: 'femme'
                                   }
                                 ]
@@ -354,14 +367,15 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td><a href="#" class="text-primary fw-bold">RAKOTO</a></td>
-                                  <td>Lala</td>
-                                  <td>2022-10-05</td>
-                                  <td>Voyage du sud</td>
-                                  <td>Court</td>
-                                </tr>
-                                
+                                <% for (ClientAchatVoyageDurre clientAchatVoyageDurre2 : clientAchatVoyageDurre) { %>
+                                    <tr>
+                                        <td><%= clientAchatVoyageDurre2.getNom() %> </td>
+                                        <td><%= clientAchatVoyageDurre2.getPrenom() %> </td>
+                                        <td><%= clientAchatVoyageDurre2.getDateAchat().getDateString() %> </td>
+                                        <td><%= clientAchatVoyageDurre2.getVoyageDurre().getVoyage().getNom_voyage() %> </td>
+                                        <td><%= clientAchatVoyageDurre2.getVoyageDurre().getDurre().getNom() %> </td>
+                                    </tr>
+                                <% } %>
                               </tbody>
                             </table>
           
@@ -376,8 +390,7 @@
                 </div>
       
               </div>
-              <div class="col-lg-3">
-              </div>
+              
             </div>
           </section>
 

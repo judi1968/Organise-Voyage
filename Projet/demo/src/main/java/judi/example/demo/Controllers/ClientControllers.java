@@ -58,6 +58,18 @@ public class ClientControllers {
     @GetMapping("/statistiqueAchatClient")
     public String StatistiqueAchatClient(Model model){ 
         try {
+            ClientAchatVoyageDurre[] clientAchatVoyageDurres = ClientAchatVoyageDurre.getAllClientAchatVoyageDurres(null);
+            int nombreHomme = ClientAchatVoyageDurre.getCountClientHommeAchat(null);
+            int nombreFemme = ClientAchatVoyageDurre.getCountClientFemmeAchat(null);
+            int totale = ClientAchatVoyageDurre.getCountClientAchat(null);
+            model.addAttribute("nombreHomme", nombreHomme);
+            model.addAttribute("nombreFemme", nombreFemme);
+            model.addAttribute("nombreTotale", totale);
+            double pourcentageHomme = (nombreHomme*100)/totale;
+            double pourcentageFemme = (nombreFemme*100)/totale;
+            model.addAttribute("pourcentageHomme", pourcentageHomme);
+            model.addAttribute("pourcentageFemme", pourcentageFemme);
+            model.addAttribute("clientachat", clientAchatVoyageDurres);
             String message = "Creation d'employer reussi";
             model.addAttribute("success_messsage", message);
             return "client/StatistiqueAchatClient";
