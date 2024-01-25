@@ -13,6 +13,7 @@ import judi.example.demo.Models.DataObject.EmployeTaux;
 import judi.example.demo.Models.DatabaseConnection.ConnectionPostgres;
 import judi.example.demo.Models.Objects.Employe;
 import judi.example.demo.Models.Objects.FonctionEmploye;
+import judi.example.demo.Models.Objects.Niveau_employe;
 import judi.example.demo.Models.Utils.DateHeure;
 
 @Controller
@@ -72,5 +73,16 @@ public class EmployerControllers {
         Employe[] employes = Employe.getAllEmploye(null);
         model.addAttribute("employes", employes);
         return "employer/listeAllEmployer";
+    }
+    
+    @GetMapping("/listAllTauxEmployerByNiveau") 
+    public String listAllTauxEmployerByNiveau(Model model) throws Exception{
+        Niveau_employe[] niveau_employes = Niveau_employe.getAllNiveau_employes(null);
+        // for (Niveau_employe niveau_employe : niveau_employes) {
+        //     niveau_employe.getDesignation_niveau()
+        //     niveau_employe.getNombre_jour_minimale()
+        // }
+        model.addAttribute("niveau_employes", niveau_employes);
+        return "employer/listAllTauxEmployerByNiveau";
     }
 }

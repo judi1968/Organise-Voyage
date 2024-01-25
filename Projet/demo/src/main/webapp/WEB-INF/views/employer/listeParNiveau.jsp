@@ -202,23 +202,21 @@ String date = (String)request.getAttribute("dateDonne");
             <section class="section">
                 <div class="card">
             <div class="card-body">
-
-                <div class="col-sm-10"  style="margin-top: 5%;" >
-
-                    <form style="margin-top: 5%;" action="/listByNiveau">
-
-                        <label for="inputDate" class="col-sm-2 col-form-label">Entrer une date </label>
-                            <div class="col-sm-10">
-                              <input type="date" value="<%= date %>" class="form-control" style="width: 20%;" name="dates">
-                            </div>
-                    
-                          <button type="submit" class="btn btn-primary"   style="width: 20%;margin-top: 2%;">ok</button>
-
-                    </form>
-
+              <div class="row">
+                <div class="col-md-6" >
+                  <a class="btn btn-primary mt-5" href="/listAllEmployer">Liste en general</a>
                 </div>
-
-              <!-- Table with stripped rows -->
+                <div class="col-md-6" >
+                  <form action="/listByNiveau">
+                    <label for="inputDate" class="col-form-label">Entrer une date </label>
+                    <div>
+                      <input type="date" value="<%= date %>" class="form-control" name="dates">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-1">Chercher</button>
+                    </form>
+                </div>
+              </div>
+                <!-- Table with stripped rows -->
               <table class="table table-striped" style="margin-top: 5%;">
                 <thead>
                   <tr>
