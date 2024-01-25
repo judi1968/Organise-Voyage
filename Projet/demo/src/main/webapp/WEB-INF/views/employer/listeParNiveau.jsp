@@ -1,7 +1,7 @@
 <%@ page import="judi.example.demo.Models.DataObject.EmployeTaux" %>
 <%
 EmployeTaux[] employes= (EmployeTaux[])request.getAttribute("employes");
-
+String date = (String)request.getAttribute("dateDonne");
 
 %>
 <!DOCTYPE html>
@@ -207,9 +207,9 @@ EmployeTaux[] employes= (EmployeTaux[])request.getAttribute("employes");
 
                     <form style="margin-top: 5%;" action="/listByNiveau">
 
-                        <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
+                        <label for="inputDate" class="col-sm-2 col-form-label">Entrer une date </label>
                             <div class="col-sm-10">
-                              <input type="date" class="form-control" style="width: 20%;" name="dates">
+                              <input type="date" value="<%= date %>" class="form-control" style="width: 20%;" name="dates">
                             </div>
                     
                           <button type="submit" class="btn btn-primary"   style="width: 20%;margin-top: 2%;">ok</button>

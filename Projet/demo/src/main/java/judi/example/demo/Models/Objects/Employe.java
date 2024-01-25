@@ -142,6 +142,7 @@ public class Employe {
                     employes[i].setFonction_designantion(resultset.getString("fonction_designation"));
                     employes[i].setPrix(resultset.getDouble("prix"));
                     employes[i].setFonction(FonctionEmploye.getFonctionEmployeById(resultset.getInt("id_fonction_fk"), connection));
+                    employes[i].setDateEmbauche(new DateHeure(resultset.getString("date_embauche")));
                     i++;
                 }
             }
@@ -192,6 +193,7 @@ public class Employe {
                 emp.setFonction_designantion(resultset.getString("fonction_designation"));
                 emp.setPrix(resultset.getDouble("prix"));
                 emp.setFonction(FonctionEmploye.getFonctionEmployeById(resultset.getInt("id_fonction_fk"), connection));
+                emp.setDateEmbauche(new DateHeure(resultset.getString("date_embauche")));
             }
             statement.close();
 		}catch (Exception e) {
@@ -247,8 +249,8 @@ public class Employe {
                    employes[i].setFonction_designantion(resultset.getString("fonction_designation"));
                    employes[i].setPrix(resultset.getDouble("prix"));
                     employes[i].setFonction(FonctionEmploye.getFonctionEmployeById(resultset.getInt("id_fonction"), connection));
-                    System.out.println(i);
-                   i++;
+                    employes[i].setDateEmbauche(new DateHeure(resultset.getString("date_embauche")));
+                    i++;
                }
            }
            statement.close();

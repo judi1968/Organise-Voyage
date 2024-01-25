@@ -1,6 +1,7 @@
 package judi.example.demo.Controllers;
 
 import java.sql.Connection;
+import java.sql.Date;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,7 +44,10 @@ public class EmployerControllers {
 
     @GetMapping("/listByNiveaudefault") 
     public String listByNiveauDefault(/*@RequestParam String date,*/Model model){
-        String date = "2100-01-01";
+        Date datev = new Date(new java.util.Date().getTime());
+        String dateString = datev.toString();
+        System.out.println(dateString);
+        String date = dateString;
         try {
             return listByNiveau(date, model);
         } catch (Exception e) {
@@ -59,7 +63,14 @@ public class EmployerControllers {
         EmployeTaux empTaux = new EmployeTaux();
         EmployeTaux[] employes = EmployeTaux.getAllEmployeTaux(date, null);
         String message = "Creation d'activite reussi";
+        model.addAttribute("dateDonne", dates);
         model.addAttribute("employes", employes);
         return "employer/listeParNiveau";
+    }
+    @GetMapping("/listAllEmployer") 
+    public String listAllEmploye(Model model) throws Exception{
+        Employe[] employes = Employe.getAllEmploye(null);
+        model.addAttribute("employes", employes);
+        return "employer/listeAllEmployer";
     }
 }

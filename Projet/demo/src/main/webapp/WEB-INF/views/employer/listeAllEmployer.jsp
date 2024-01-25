@@ -1,3 +1,7 @@
+<%@ page import="judi.example.demo.Models.Objects.Employe" %>
+<%
+    Employe[] employes= (Employe[])request.getAttribute("employes");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -155,18 +159,6 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#fonction-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Fonction</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="fonction-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="/listFonctionEmploye">
-              <i class="bi bi-circle"></i><span>Liste</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#employer-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Employer</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -174,11 +166,6 @@
           <li>
             <a href="/creerEmployer">
               <i class="bi bi-circle"></i><span>Creer</span>
-            </a>
-          </li>
-          <li>
-            <a href="/listAllEmployer">
-              <i class="bi bi-circle"></i><span>Liste</span>
             </a>
           </li>
           <li>
@@ -198,13 +185,55 @@
       <h1>Accueil</h1>
     </div><!-- End Page Title -->
 
+  
     <section class="section dashboard">
       <div class="row">
-        <center>
-            <h1 style="margin-top: 25%;">Voyage</h1>
-        </center>
+        <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="pagetitle col-lg-6" style="margin-top: 5%; margin-left: 2%;">
+          <h1>Liste employe avec niveau et taux horaire</h1>
+        </div><!-- End Page Title -->
+        <div class="col-lg-3"></div>
+        </div>
+
+            <!-- <h1 style="margin-top: 25%">Creer</h1> -->
+            <section class="section">
+                <div class="card">
+            <div class="card-body">
+
+                <div class="col-sm-10"  style="margin-top: 5%;" >
+                    <a class="btn btn-primary" href="/listByNiveaudefault"  style="width: 20%;margin-top: 2%;">Liste avec poste actuelle</a>
+                </div>
+
+              <!-- Table with stripped rows -->
+              <table class="table table-striped" style="margin-top: 5%;">
+                <thead>
+                  <tr>
+                    <th scope="col">Nom Employe</th>
+                    <th scope="col">Fonction</th>
+                    <th scope="col">Date d'embauche</th>
+                    <th scope="col">Taux (Niveau simple)</th>
+                  </tr>
+                </thead>
+                <tbody>    
+                    <% for (Employe employe : employes) { %>
+                        <tr>
+                            <td><%= employe.getFonction_designantion() %></td>
+                            <td><%= employe.getFonction().getNom_designation() %></td>
+                            <td><%= employe.getDateEmbauche().getDateTimeString() %></td>
+                            <td><%= employe.getPrix()%></td>
+                        </tr>
+                    <% } %>   
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+              </section>
       </div>
     </section>
+
 
   </main><!-- End #main -->
 

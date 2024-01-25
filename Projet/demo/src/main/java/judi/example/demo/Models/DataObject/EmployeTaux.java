@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import judi.example.demo.Models.DatabaseConnection.ConnectionPostgres;
+import judi.example.demo.Models.Objects.FonctionEmploye;
 import judi.example.demo.Models.Objects.Niveau_employe;
 import judi.example.demo.Models.Utils.DateHeure;
 
@@ -85,7 +86,7 @@ public class EmployeTaux {
 			statementOpen = true;
 			
 			resultset =  statement.executeQuery();
-			
+			System.out.println(statement.toString());
 			while(resultset.next()) {
                 size++;
 			}
@@ -98,9 +99,9 @@ public class EmployeTaux {
                 String nom = "";
                 while(resultset.next()){
                     employeTaux[i] = new EmployeTaux();
-                    employeTaux[i].setNomEmploye(resultset.getString("fonction_designation").split("-")[0]);
+                    employeTaux[i].setNomEmploye(resultset.getString("fonction_designation"));
                     employeTaux[i].setDate(resultset.getString("date_embauche"));
-                    employeTaux[i].setFonction(resultset.getString("fonction_designation").split("-")[1]);
+                    employeTaux[i].setFonction(FonctionEmploye.getFonctionEmployeById(resultset.getInt("id_fonction_fk"), connection).getNom_designation());
                     employeTaux[i].setNiveau(Niveau_employe.getNiveauByJourString(resultset.getString("nombre_jours")));
                     employeTaux[i].setTaux(resultset.getDouble("prix")*Niveau_employe.getTauxByJourString(resultset.getString("nombre_jours")));
                     System.out.println(employeTaux[i].getNomEmploye());
