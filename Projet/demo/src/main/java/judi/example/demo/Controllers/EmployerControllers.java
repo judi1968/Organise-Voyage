@@ -1,5 +1,7 @@
 package judi.example.demo.Controllers;
 
+import java.sql.Connection;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,17 +9,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import judi.example.demo.Models.DataObject.EmployeTaux;
+import judi.example.demo.Models.DatabaseConnection.ConnectionPostgres;
 import judi.example.demo.Models.Objects.Employe;
+import judi.example.demo.Models.Objects.FonctionEmploye;
 import judi.example.demo.Models.Utils.DateHeure;
 
 @Controller
 public class EmployerControllers {
     @PostMapping("/traiteCreationEmployer") // mbola tsy vita
-    public String createEmployertraitement(@RequestParam String nom_employer,@RequestParam String prix, String date,Model model){ 
+    public String createEmployertraitement(@RequestParam String nom_employer,@RequestParam String prix, String id_fonction,String date,Model model){ 
         try {
-
             DateHeure datev = new DateHeure(date.concat(" 00:00:00"));
-            Employe emp = new Employe(0, nom_employer,Double.parseDouble(prix));
+            FonctionEmploye fonctionEmployer = FonctionEmploye.getFonctionEmployeById(Integer.parseInt(id_fonction), null);
+            Employe emp = new Employe(0, nom_employer,Double.parseDouble(prix),fonctionEmployer);
             emp.setDateEmbauche(datev);
             emp.insertNewEmploye(null);
             String message = "Creation d'employer reussi";

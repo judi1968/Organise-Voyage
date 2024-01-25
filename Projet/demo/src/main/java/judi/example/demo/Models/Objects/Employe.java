@@ -14,6 +14,13 @@ public class Employe {
     String fonction_designantion;
     Double prix;
     DateHeure dateEmbauche;
+    FonctionEmploye fonction;
+    public void setFonction(FonctionEmploye fonction) {
+        this.fonction = fonction;
+    }
+    public FonctionEmploye getFonction() {
+        return fonction;
+    }
     public void setDateEmbauche(DateHeure dateEmbauche) {
         this.dateEmbauche = dateEmbauche;
     }
@@ -49,15 +56,16 @@ public class Employe {
 
     }
 
-    public Employe(int id, String fonction, double prix){
+    public Employe(int id, String fonction, double prix,FonctionEmploye fonctionEmploye){
         setId_employe(id);
         setFonction_designantion(fonction);
         setPrix(prix);
+        setFonction(fonctionEmploye);
     }
 
     //insert
     public void insertNewEmploye(Connection connection) throws Exception{
-        String query = "INSERT INTO employe ( fonction_designation, prix,date_embauche) VALUES ( ?, ? , ?);";
+        String query = "INSERT INTO employe ( fonction_designation, prix,date_embauche, id_fonction_fk) VALUES ( ?, ? , ?, ?);";
         PreparedStatement statement = null;
 		ResultSet resultset= null;
 		boolean statementOpen = false;
@@ -74,6 +82,7 @@ public class Employe {
             statement.setString(1, this.getFonction_designantion());
             statement.setDouble(2, this.getPrix());
             statement.setTimestamp(3, Timestamp.valueOf(LocalDateTime.of(dateEmbauche.getDate(), dateEmbauche.getHeure())));
+            statement.setInt(4, this.getFonction().getId_fonction());
 
 			statementOpen = true;
             
@@ -132,8 +141,7 @@ public class Employe {
                     employes[i].setId_employe(resultset.getInt("id_employe"));
                     employes[i].setFonction_designantion(resultset.getString("fonction_designation"));
                     employes[i].setPrix(resultset.getDouble("prix"));
-
-
+                    employes[i].setFonction(FonctionEmploye.getFonctionEmployeById(resultset.getInt("id_fonction_fk"), connection));
                     i++;
                 }
             }
@@ -183,7 +191,7 @@ public class Employe {
                 emp.setId_employe(resultset.getInt("id_Employe"));
                 emp.setFonction_designantion(resultset.getString("fonction_designation"));
                 emp.setPrix(resultset.getDouble("prix"));
-
+                emp.setFonction(FonctionEmploye.getFonctionEmployeById(resultset.getInt("id_fonction_fk"), connection));
             }
             statement.close();
 		}catch (Exception e) {
@@ -238,7 +246,7 @@ public class Employe {
                    employes[i].setId_employe(resultset.getInt("id_employe"));
                    employes[i].setFonction_designantion(resultset.getString("fonction_designation"));
                    employes[i].setPrix(resultset.getDouble("prix"));
-
+                    employes[i].setFonction(FonctionEmploye.getFonctionEmployeById(resultset.getInt("id_fonction"), connection));
                     System.out.println(i);
                    i++;
                }

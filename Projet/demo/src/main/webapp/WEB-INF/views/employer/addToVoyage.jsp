@@ -215,7 +215,7 @@ VoyageDurre[] voyageDurres= (VoyageDurre[])request.getAttribute("voyageDurres");
                 <div class="col-sm-10" style="margin-top: 2%;" >
                   <select class="form-select" aria-label="Default select example" name="id_employe">
                     <% for (Employe employe : employes) { %>
-                    <option value="<%= employe.getId_employe() %>"><%= employe.getFonction_designantion() %></option>
+                    <option value="<%= employe.getId_employe() %>"><%= employe.getFonction_designantion().concat(" - "+employe.getFonction().getNom_designation()) %></option>
                     <% } %>
                   </select>
 

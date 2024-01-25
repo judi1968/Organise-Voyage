@@ -35,7 +35,6 @@ public class FonctionEmployeController {
     @GetMapping("/listFonctionEmploye")
     public String getAllFonctionEmploye(Model model) {
         Connection connection = null;
-
         try {
             FonctionEmploye[] fonctionEmployes = FonctionEmploye.getAllFonctionEmploye(connection);
             model.addAttribute("fonctionEmployes", fonctionEmployes);

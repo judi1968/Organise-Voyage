@@ -1,3 +1,7 @@
+<%@ page import="judi.example.demo.Models.Objects.FonctionEmploye" %>
+<%
+    FonctionEmploye[] fonctionEmployes = (FonctionEmploye[])request.getAttribute("fonctionEmployes");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -194,11 +198,21 @@
                 <form method="post" action="traiteCreationEmployer">
                   
                  <div class="row mb-3">
-                <div class="row mb-3">
-                    <label for="inputText" class="col-sm-2 col-form-label">Fonction</label>
+                  <div class="row mb-3">
+                    <label for="inputText" class="col-sm-2 col-form-label">Nom employe</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="nom_employer">
                     </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" style="margin-top: 2%;">Fonction</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" aria-label="Default select example" name="id_fonction">
+                        <% for (FonctionEmploye fonctionEmploye : fonctionEmployes) { %>
+                          <option value="<%= fonctionEmploye.getId_fonction() %>"><%= fonctionEmploye.getNom_designation() %> </option>
+                          <% } %>
+                        </select>
+                      </div>
                   </div>
 
                   <div class="row mb-3">

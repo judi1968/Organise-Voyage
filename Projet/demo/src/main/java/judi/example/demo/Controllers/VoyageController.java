@@ -13,6 +13,7 @@ import judi.example.demo.Models.Objects.ActiviteVoyage;
 import judi.example.demo.Models.Objects.Bouquet;
 import judi.example.demo.Models.Objects.Durre;
 import judi.example.demo.Models.Objects.Employe;
+import judi.example.demo.Models.Objects.FonctionEmploye;
 import judi.example.demo.Models.Objects.Lieu;
 import judi.example.demo.Models.Objects.Voyage;
 import judi.example.demo.Models.Objects.VoyageDurre;
@@ -71,7 +72,15 @@ public class VoyageController {
         }
     }
     @GetMapping("/creerEmployer")
-    public String creerEmployer(){
+    public String creerEmployer(Model model ){
+        try {
+            FonctionEmploye[] fonctionEmployes = FonctionEmploye.getAllFonctionEmploye(null);
+            model.addAttribute("fonctionEmployes", fonctionEmployes);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            e.printStackTrace();
+        }
         return "employer/create";
     }
     @GetMapping("/ajouter_prix_voyage")
