@@ -244,5 +244,4 @@ public class VoyageController {
         }
         return addEmployerToVoyage(model);
     }    
-    
 }
