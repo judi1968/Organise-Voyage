@@ -15,7 +15,7 @@ double pourcentageFemme = (double)request.getAttribute("pourcentageFemme");
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Organise Voyage</title>
+  <title>Statistique achat client</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
