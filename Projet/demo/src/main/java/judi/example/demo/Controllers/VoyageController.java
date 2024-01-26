@@ -49,7 +49,7 @@ public class VoyageController {
     }
     @GetMapping("/succesPage")
     public String successPage(){
-        return "index";
+        return "otherPage/succees";
     }
     @GetMapping("/createActivite")
     public String createActivite(){
