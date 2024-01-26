@@ -47,6 +47,10 @@ public class VoyageController {
     public String login(){
         return "index";
     }
+    @GetMapping("/succesPage")
+    public String successPage(){
+        return "index";
+    }
     @GetMapping("/createActivite")
     public String createActivite(){
         return "activite/create";
@@ -243,5 +247,7 @@ public class VoyageController {
             e.printStackTrace();
         }
         return addEmployerToVoyage(model);
-    }    
+    }
+    
+    
 }
