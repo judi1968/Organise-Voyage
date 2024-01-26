@@ -62,7 +62,8 @@
     </div><!-- End Search Bar -->
 
   </header><!-- End Header -->
-  <aside id="sidebar" class="sidebar">
+   <!-- ======= Sidebar ======= -->
+   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -198,9 +199,32 @@
           </li>
         </ul>
       </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#client-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Client</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="client-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/createClient">
+              <i class="bi bi-circle"></i><span>Creer</span>
+            </a>
+          </li>
+          <li>
+            <a href="/acheterVoyage">
+              <i class="bi bi-circle"></i><span>Achat de voyage</span>
+            </a>
+          </li>
+          <li>
+            <a href="/statistiqueAchatClient">
+              <i class="bi bi-circle"></i><span>Statistique d'achat</span>
+            </a>
+          </li>
+        </ul>
+      </li>
     </ul>
 
   </aside><!-- End Sidebar-->
+-- End Sidebar-->
 
   <main id="main" class="main">
 
