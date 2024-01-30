@@ -231,7 +231,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Accueil</h1>
+      <h1>Liste</h1>
     </div><!-- End Page Title -->
 
   

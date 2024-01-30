@@ -438,4 +438,46 @@ public class Activite{
 			}
 		}
     }
+	
+	public int getNombreStockById(Connection connection) throws Exception{
+        String query = "select * from v_stock_billet_activite_reste where id_activite_fk=?";
+        int size = 0;
+        PreparedStatement statement = null;
+		ResultSet resultset= null;
+		boolean statementOpen = false;
+		boolean resultsetOpen = false;
+		boolean closeable = false;
+		try {
+            if(connection==null) {
+                connection = ConnectionPostgres.connect("localhost",5432,"voyage","postgres","mdpprom15");
+				connection.setAutoCommit(false);
+                closeable = true;
+			}
+			
+			statement = connection.prepareStatement(query);
+            statement.setInt(1, this.getId_activite());
+
+			statementOpen = true;
+			
+			resultset = statement.executeQuery();
+			while (resultset.next()) {
+				size = resultset.getInt("nb_reste");
+			}
+            statement.close();
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			if(statementOpen) {
+				statement.close();
+			}
+			if(resultsetOpen) {
+				resultset.close();
+			}
+			if(closeable) {
+				connection.commit();
+				connection.close();
+			}
+		}
+		return size;
+    }
 }

@@ -253,6 +253,7 @@
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Nom</th>
+                      <th scope="col">Nombre en stock</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -260,6 +261,7 @@
                     <tr>
                       <th scope="row"><%= i+1 %></th>
                       <td><%= activites[i].getNom_activite() %></td>
+                      <td><%= activites[i].getNombreStockById(null) %></td>
                     </tr>
                     <% }  %>
                   </tbody>

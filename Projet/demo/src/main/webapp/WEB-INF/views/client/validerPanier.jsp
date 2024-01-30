@@ -3,6 +3,7 @@
 <%@ page import="judi.example.demo.Models.DataObject.ClientAchatVoyageDurre" %>
 <%
 Client[] clients= (Client[])request.getAttribute("clients");
+String erreur = (String)request.getAttribute("erreur");
 
 %>
 <!DOCTYPE html>
@@ -308,6 +309,9 @@ Client[] clients= (Client[])request.getAttribute("clients");
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
       <div class="modal-content">
         <div class="modal-header">
+          <% if(erreur.compareToIgnoreCase("none")==0){ %>
+                <p>Stock insuffisant</p>
+          <% } %>
           <h5 class="modal-title">Panier du <span style="text-decoration: underline;"><%= client.getNom() %> <%= client.getPrenom() %></span></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>

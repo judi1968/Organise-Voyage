@@ -175,6 +175,101 @@ public class Client {
 		}
         return client;
     }
+    
+    public void modifyStock(Connection connection) throws Exception{
+        System.out.println("ici");
+        String query = "select * from v_nombre_billet_activite_finale_client_panier where id_client_fk= ? ";
+        Client client;
+        client = new Client();
+        PreparedStatement statement = null;
+		ResultSet resultset= null;
+		boolean statementOpen = false;
+		boolean resultsetOpen = false;
+		boolean closeable = false;
+        boolean stockSuffisant = true;
+		try {
+            if(connection==null) {
+                connection = ConnectionPostgres.connect("localhost",5432,"voyage","postgres","mdpprom15");
+				connection.setAutoCommit(false);
+                closeable = true;
+			}
+			
+			statement = connection.prepareStatement(query);
+            statement.setInt(1, this.getId_client());
+			statementOpen = true;
+                resultset =  statement.executeQuery();
+                while(resultset.next()){
+                    System.out.println("ici");
+                   Activite activite = new Activite();
+                   activite.setId_activite(resultset.getInt("id_activite_fk"));
+                    activite.addActiviteSortant(resultset.getInt("somme_nombre_activite"), connection); 
+                      
+                }
+            
+			statement.close();
+			
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			if(statementOpen) {
+				statement.close();
+			}
+			if(resultsetOpen) {
+				resultset.close();
+			}
+			if(closeable) {
+				connection.commit();
+				connection.close();
+			}
+		}
+    }
+
+    public boolean verifyStockActiviteSuffisantByIdClient(Connection connection) throws Exception{
+        String query = "select * from v_nombre_billet_activite_finale_client_panier where id_client_fk= ? ";
+        Client client;
+        client = new Client();
+        PreparedStatement statement = null;
+		ResultSet resultset= null;
+		boolean statementOpen = false;
+		boolean resultsetOpen = false;
+		boolean closeable = false;
+        boolean stockSuffisant = true;
+		try {
+            if(connection==null) {
+                connection = ConnectionPostgres.connect("localhost",5432,"voyage","postgres","mdpprom15");
+				connection.setAutoCommit(false);
+                closeable = true;
+			}
+			
+			statement = connection.prepareStatement(query);
+            statement.setInt(1, this.getId_client());
+			statementOpen = true;
+                resultset =  statement.executeQuery();
+                while(resultset.next()){
+                    if (resultset.getInt("nb_reste_finale")<0) {
+                        stockSuffisant=false;
+                        break;
+                    }
+                }
+            
+			statement.close();
+			
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			if(statementOpen) {
+				statement.close();
+			}
+			if(resultsetOpen) {
+				resultset.close();
+			}
+			if(closeable) {
+				connection.commit();
+				connection.close();
+			}
+		}
+        return stockSuffisant;
+    }
 
     public void insertNewClient(Connection connection) throws Exception
     {

@@ -139,7 +139,7 @@ public class ClientControllers {
             Client[] clients = Client.getAllClient(null);
             
             model.addAttribute("clients", clients);
-
+            model.addAttribute("erreur", "none");
             return "client/validerPanier";
         } catch (Exception e) {
             // TODO: handle exception
@@ -152,15 +152,41 @@ public class ClientControllers {
     public void validePanierTraitement(HttpServletResponse res,@RequestParam String id_client, Model model){ 
         try {
             int id_clienti = Integer.parseInt(id_client);
-            ClientAchatVoyageDurre.validePanier(id_clienti);
-            Client[] clients = Client.getAllClient(null);
-            
-            model.addAttribute("clients", clients);
-            res.sendRedirect("/validerPanier");
+            // alaina daholo ny activite sy ny nombre ny activite an ilay client
+            Client client = Client.getClientById(id_clienti, null);
+            if(!client.verifyStockActiviteSuffisantByIdClient(null)){
+                res.sendRedirect("/stockSuffisant");
+            }else{
+
+                // rehefa azo io de verifiena amzay raha misy an io stock io is
+                client.modifyStock(null);
+                ClientAchatVoyageDurre.validePanier(id_clienti);
+                Client[] clients = Client.getAllClient(null);
+                
+                model.addAttribute("clients", clients);
+                res.sendRedirect("/validerPanier");
+            }
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }    
     } 
+
+    
+    @GetMapping("/stockSuffisant") 
+    public String stockSuffisant(Model model){ 
+        try {
+            Client[] clients = Client.getAllClient(null);
+            
+            model.addAttribute("clients", clients);
+            model.addAttribute("erreur", "stock suffisant");
+            
+            return "client/validerPanier";
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "index";
+        }    
+    }
 }
 
