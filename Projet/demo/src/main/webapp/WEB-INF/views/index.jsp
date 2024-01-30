@@ -205,7 +205,12 @@
           </li>
           <li>
             <a href="/acheterVoyage">
-              <i class="bi bi-circle"></i><span>Achat de voyage</span>
+              <i class="bi bi-circle"></i><span>Ajouter voyage dans le panier</span>
+            </a>
+          </li>
+          <li>
+            <a href="/validerPanier">
+              <i class="bi bi-circle"></i><span>Valider panier d'un client</span>
             </a>
           </li>
           <li>

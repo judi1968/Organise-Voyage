@@ -129,6 +129,22 @@ public class ClientControllers {
             return "index";
         }    
     }
+
+    @GetMapping("/validerPanier") 
+    public String validerPanier(Model model){ 
+        try {
+            Client[] clients = Client.getAllClient(null);
+            
+            model.addAttribute("clients", clients);
+            return "client/validerPanier";
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return "index";
+        }    
+    }
+
+    
  
 }
 

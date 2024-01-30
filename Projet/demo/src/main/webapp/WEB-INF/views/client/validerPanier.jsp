@@ -2,8 +2,6 @@
 <%@ page import="judi.example.demo.Models.Objects.VoyageDurre" %>
 <%
 Client[] clients= (Client[])request.getAttribute("clients");
-VoyageDurre[] voyageDurres= (VoyageDurre[])request.getAttribute("voyageDurres");
-
 
 %>
 <!DOCTYPE html>
@@ -230,7 +228,7 @@ VoyageDurre[] voyageDurres= (VoyageDurre[])request.getAttribute("voyageDurres");
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Accueil</h1>
+      <h1>Panier</h1>
     </div><!-- End Page Title -->
 
   
@@ -255,70 +253,31 @@ VoyageDurre[] voyageDurres= (VoyageDurre[])request.getAttribute("voyageDurres");
                 <div class="row">
                     <div class="col-lg-3"></div>
                   <div class="col-lg-6">
-          
-                    <div class="card" style="margin-top: 0%;">
+                    <div class="card">
                       <div class="card-body">
-                        <h5 class="card-title">Inserer voyage client</h5>
+                        <h5 class="card-title">Liste des bouquets</h5>
           
-                        <!-- General Form Elements -->
-                        <form action="vendreVoyageDurreByClientTraitement" method="post">
-                          
-                         <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Client</label>
-                        <div class="col-sm-10">
-                          <select class="form-select" aria-label="Default select example" name="client">
-                            <option selected>Choisir un client</option>
+                        <!-- Table with stripped rows -->
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col">Nom</th>
+                              <th scope="col">Activites</th>
+                            </tr>
+                          </thead>
+                          <tbody>
                             <% for (Client client : clients) { %>
-                              <option value="<%= client.getId_client() %>"><%= client.getNom()+" "+client.getPrenom() %></option>
+                            <tr>                              
+                              <td><%= client.getNom()+" "+client.getPrenom() %></td>
+                              <td><a href="/listAllActiviteToBouquet?id_bouquet=<%= client.getId_client() %>" title="Voir tout les voyages acheter"><i class="bi bi-eye-fill" style="color: rgb(93, 93, 255); font-size: x-large; "></i></a><span>  </span><a href="/addActiviteInBouquet?id_bouquet=<%= client.getId_client() %>" title="Valider le panier"><i class="bi bi-cart-check" style="color: rgb(93, 93, 255); font-size: x-large;"></i></a></td>
+                            </tr>
                             <% } %>
-                          </select>
-                        </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label">Voyage</label>
-                            <div class="col-sm-10">
-                              <select class="form-select" aria-label="Default select example" name="voyage">
-                                <option selected>Choisir un voyage</option>
-                                <% for (VoyageDurre v : voyageDurres) { %>
-                                  <option value="<%= v.getVoyage().getId_voyage() %>;<%= v.getDurre().getId() %>"><%= v.getVoyage().getNom_voyage() %> - <%= v.getDurre().getNom() %></option>
-                                <% } %>
-                              </select>
-                            </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="inputText" class="col-sm-2 col-form-label">Date</label>
-                                <div class="col-sm-10">
-                                    <input type="date" class="form-control" name="date">
-                            </div>
-                            </div>
-
-                      <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label"></label>
-                      <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Valider</button>
+                          </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
                       </div>
                     </div>
-                             
-                            
-                          
-                          <div class="row mb-3">
-                            <div class="col-sm-10">
-          
-                              
-          
-                             
-          
-                            </div>
-                          </div>
-          
-                          
-          
-                        </form><!-- End General Form Elements -->
-          
-                      </div>
-                    </div>
+            
           
                   </div>
                   <div class="col-lg-3">
