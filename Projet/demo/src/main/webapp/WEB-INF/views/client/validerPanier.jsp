@@ -262,14 +262,19 @@ Client[] clients= (Client[])request.getAttribute("clients");
                           <thead>
                             <tr>
                               <th scope="col">Nom</th>
-                              <th scope="col">Activites</th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
                             </tr>
                           </thead>
                           <tbody>
                             <% for (Client client : clients) { %>
                             <tr>                              
                               <td><%= client.getNom()+" "+client.getPrenom() %></td>
-                              <td><a href="/listAllActiviteToBouquet?id_bouquet=<%= client.getId_client() %>" title="Voir tout les voyages acheter"><i class="bi bi-eye-fill" style="color: rgb(93, 93, 255); font-size: x-large; "></i></a><span>  </span><a href="/addActiviteInBouquet?id_bouquet=<%= client.getId_client() %>" title="Valider le panier"><i class="bi bi-cart-check" style="color: rgb(93, 93, 255); font-size: x-large;"></i></a></td>
+                              <td>  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDialogScrollable<%= client.getId_client() %>">
+                                Voir le panier <i class="bi bi-eye" style="color: rgb(255, 255, 255); font-size: x-large; "></i>
+                              </button></a>
+                              </td>
+                              <td><a class="btn-primary btn" href="/addActiviteInBouquet?id_client=<%= client.getId_client() %>" title="Valider le panier">Valider <i class="bi bi-cart-check" style="color: rgb(255, 255, 255); font-size: x-large;"></i></a></td>
                             </tr>
                             <% } %>
                           </tbody>
@@ -291,6 +296,43 @@ Client[] clients= (Client[])request.getAttribute("clients");
 
 
   </main><!-- End #main -->
+  <% for (Client client : clients) { %>
+
+  <div class="modal fade" id="modalDialogScrollable<%= client.getId_client() %>" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Panier du <span style="text-decoration: underline;"><%= client.getNom() %> <%= client.getPrenom() %></span></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-borderless">
+            <thead>
+                <tr>
+                <th scope="col">Date d'achat</th>
+                <th scope="col">Nom voyage</th>
+                <th scope="col">Type voyage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%// for (ClientAchatVoyageDurre clientAchatVoyageDurre2 : clientAchatVoyageDurre) { %>
+                    <tr>
+                        <td><%// clientAchatVoyageDurre2.getDateAchat().getDateString() %> </td>
+                        <td><%// clientAchatVoyageDurre2.getVoyageDurre().getVoyage().getNom_voyage() %> </td>
+                        <td><%// clientAchatVoyageDurre2.getVoyageDurre().getDurre().getNom() %> </td>
+                    </tr>
+                <%// } %>
+            </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x" style="color: rgb(255, 255, 255); font-size: x-large;"></i> Fermer</button>
+          <a class="btn-primary btn" href="/addActiviteInBouquet?id_client=<%= client.getId_client() %>" title="Valider le panier">Valider <i class="bi bi-cart-check" style="color: rgb(255, 255, 255); font-size: x-large;"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
