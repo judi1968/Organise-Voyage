@@ -81,7 +81,7 @@ public class ClientAchatVoyageDurre extends Client{
 
 
     public static ClientAchatVoyageDurre[] getAllClientAchatVoyageDurres(Connection connection) throws Exception{
-        String query = "select * from v_vente_voyage_to_client";
+        String query = "select * from v_vente_voyage_to_client_acheter";
         ClientAchatVoyageDurre[] clientAchatVoyageDurres;
         int size = 0;
         PreparedStatement statement = null;
@@ -150,7 +150,7 @@ public class ClientAchatVoyageDurre extends Client{
     }
     
     public static int getCountClientAchat(Connection connection) throws Exception{
-        String query = "select count(*) nombre from v_vente_voyage_to_client";
+        String query = "select count(*) nombre from v_vente_voyage_to_client_acheter";
         ClientAchatVoyageDurre[] clientAchatVoyageDurres;
         int size = 0;
         PreparedStatement statement = null;
@@ -195,7 +195,7 @@ public class ClientAchatVoyageDurre extends Client{
     }
       
     public static int getCountClientHommeAchat(Connection connection) throws Exception{
-        String query = "select count(*) nombre from v_vente_voyage_to_client where id_genre=1";
+        String query = "select count(*) nombre from v_vente_voyage_to_client_acheter where id_genre=1";
         ClientAchatVoyageDurre[] clientAchatVoyageDurres;
         int size = 0;
         PreparedStatement statement = null;
@@ -240,7 +240,7 @@ public class ClientAchatVoyageDurre extends Client{
     }
            
     public static int getCountClientFemmeAchat(Connection connection) throws Exception{
-        String query = "select count(*) nombre from v_vente_voyage_to_client where id_genre=2";
+        String query = "select count(*) nombre from v_vente_voyage_to_client_acheter where id_genre=2";
         ClientAchatVoyageDurre[] clientAchatVoyageDurres;
         int size = 0;
         PreparedStatement statement = null;
