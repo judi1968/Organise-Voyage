@@ -65,15 +65,24 @@ public class ClientControllers {
             model.addAttribute("nombreHomme", nombreHomme);
             model.addAttribute("nombreFemme", nombreFemme);
             model.addAttribute("nombreTotale", totale);
-            double pourcentageHomme = (nombreHomme*100)/totale;
-            double pourcentageFemme = (nombreFemme*100)/totale;
+            double pourcentageHomme = 0;
+            double pourcentageFemme = 0;
+            try {
+                pourcentageHomme = (nombreHomme*100)/totale;
+                pourcentageFemme = (nombreFemme*100)/totale;
+            } catch (Exception e) {
+                
+            }
+
+                
             model.addAttribute("pourcentageHomme", pourcentageHomme);
             model.addAttribute("pourcentageFemme", pourcentageFemme);
             model.addAttribute("clientachat", clientAchatVoyageDurres);
             String message = "Creation d'employer reussi";
             model.addAttribute("success_messsage", message);
             return "client/StatistiqueAchatClient";
-        } catch (Exception e) {
+                
+             } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
             return "index";
