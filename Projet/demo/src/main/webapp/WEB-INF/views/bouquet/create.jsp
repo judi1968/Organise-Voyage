@@ -59,168 +59,173 @@
 
   </header><!-- End Header -->
 
- <!-- ======= Sidebar ======= -->
- <aside id="sidebar" class="sidebar">
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
 
-  <ul class="sidebar-nav" id="sidebar-nav">
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-    <li class="nav-item">
-      <a class="nav-link " href="/">
-        <i class="bi bi-house"></i>
-        <span>Accueil</span>
-      </a>
-    </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link " href="/">
+          <i class="bi bi-house"></i>
+          <span>Accueil</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
 
-    <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#activite-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Activite</span><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul id="activite-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="/createActivite">
-            <i class="bi bi-circle"></i><span>Creer</span>
-          </a>
-        </li>
-        <li>
-          <a href="/addActivite">
-            <i class="bi bi-circle"></i><span>Ajouter</span>
-          </a>
-        </li>
-        <li>
-          <a href="listActivite">
-            <i class="bi bi-circle"></i><span>Liste</span>
-          </a>
-        </li>
-        <li>
-          <a href="searchActiviteToVoyage">
-            <i class="bi bi-circle"></i><span>Chercher dans un voyage</span>
-          </a>
-        </li>
-        <li>
-          <a href="updateActivitePrix">
-            <i class="bi bi-circle"></i><span>Modifier Prix</span>
-          </a>
-        </li>
-      </ul>
-    </li><!-- End Components Nav -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#bouquet-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Bouquet</span><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul id="bouquet-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="/createBouquet">
-            <i class="bi bi-circle"></i><span>Creer</span>
-          </a>
-        </li>
-        <li>
-          <a href="listBouquet">
-            <i class="bi bi-circle"></i><span>Liste</span>
-          </a>
-        </li>
-      </ul>
-    </li><!-- End Components Nav -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#voyage-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Voyage</span><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul id="voyage-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="/createVoyage">
-            <i class="bi bi-circle"></i><span>Creer</span>
-          </a>
-        </li>
-        <li>
-          <a href="/list_voyage">
-            <i class="bi bi-circle"></i><span>Liste</span>
-          </a>
-        </li>
-        <li>
-          <a href="/form_search_activite_prix">
-            <i class="bi bi-circle"></i><span>Chercher par intervalle de prix activite</span>
-          </a>
-        </li>
-        <li>
-          <a href="/vendre_voyage">
-            <i class="bi bi-circle"></i><span>Vendre billet</span>
-          </a>
-        </li>
-        <li>
-          <a href="/ajouter_prix_voyage">
-            <i class="bi bi-circle"></i><span>Ajouter prix</span>
-          </a>
-        </li>
-        <li>
-          <a href="/list_voyage_in_benefice">
-            <i class="bi bi-circle"></i><span>Rechercher un voyage par son benefice</span>
-          </a>
-        </li>
-      </ul>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#fonction-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Fonction</span><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul id="fonction-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="/listFonctionEmploye">
-            <i class="bi bi-circle"></i><span>Liste</span>
-          </a>
-        </li>
-      </ul>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#employer-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Employer</span><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul id="employer-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="/creerEmployer">
-            <i class="bi bi-circle"></i><span>Creer</span>
-          </a>
-        </li>
-        <li>
-          <a href="/listAllEmployer">
-            <i class="bi bi-circle"></i><span>Liste</span>
-          </a>
-        </li>
-        <li>
-          <a href="/addEmployerToVoyage">
-            <i class="bi bi-circle"></i><span>Ajouter a un voyage</span>
-          </a>
-        </li>
-        <li>
-          <a href="/listAllTauxEmployerByNiveau">
-            <i class="bi bi-circle"></i><span>Gerer les salaires</span>
-          </a>
-        </li>
-      </ul>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#client-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Client</span><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul id="client-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="/createClient">
-            <i class="bi bi-circle"></i><span>Creer</span>
-          </a>
-        </li>
-        <li>
-          <a href="/acheterVoyage">
-            <i class="bi bi-circle"></i><span>Achat de voyage</span>
-          </a>
-        </li>
-        <li>
-          <a href="/statistiqueAchatClient">
-            <i class="bi bi-circle"></i><span>Statistique d'achat</span>
-          </a>
-        </li>
-      </ul>
-    </li>
-  </ul>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#activite-nav" data-bs-toggle="collapse" href="#">
+          <i class="ri-basketball-line"></i><span>Activite</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="activite-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/createActivite">
+              <i class="bi bi-circle"></i><span>Creer</span>
+            </a>
+          </li>
+          <li>
+            <a href="/addActivite">
+              <i class="bi bi-circle"></i><span>Ajouter</span>
+            </a>
+          </li>
+          <li>
+            <a href="listActivite">
+              <i class="bi bi-circle"></i><span>Liste</span>
+            </a>
+          </li>
+          <li>
+            <a href="searchActiviteToVoyage">
+              <i class="bi bi-circle"></i><span>Chercher dans un voyage</span>
+            </a>
+          </li>
+          <li>
+            <a href="updateActivitePrix">
+              <i class="bi bi-circle"></i><span>Modifier Prix</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#bouquet-nav" data-bs-toggle="collapse" href="#">
+          <i class="ri-checkbox-multiple-blank-line"></i><span>Bouquet</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="bouquet-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/createBouquet">
+              <i class="bi bi-circle"></i><span>Creer</span>
+            </a>
+          </li>
+          <li>
+            <a href="listBouquet">
+              <i class="bi bi-circle"></i><span>Liste</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#voyage-nav" data-bs-toggle="collapse" href="#">
+          <i class="ri-send-plane-fill"></i><span>Voyage</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="voyage-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/createVoyage">
+              <i class="bi bi-circle"></i><span>Creer</span>
+            </a>
+          </li>
+          <li>
+            <a href="/list_voyage">
+              <i class="bi bi-circle"></i><span>Liste</span>
+            </a>
+          </li>
+          <li>
+            <a href="/form_search_activite_prix">
+              <i class="bi bi-circle"></i><span>Chercher par intervalle de prix activite</span>
+            </a>
+          </li>
+          <li>
+            <a href="/vendre_voyage">
+              <i class="bi bi-circle"></i><span>Vendre billet</span>
+            </a>
+          </li>
+          <li>
+            <a href="/ajouter_prix_voyage">
+              <i class="bi bi-circle"></i><span>Ajouter prix</span>
+            </a>
+          </li>
+          <li>
+            <a href="/list_voyage_in_benefice">
+              <i class="bi bi-circle"></i><span>Rechercher un voyage par son benefice</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#fonction-nav" data-bs-toggle="collapse" href="#">
+          <i class="ri-settings-line"></i><span>Fonction</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="fonction-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/listFonctionEmploye">
+              <i class="bi bi-circle"></i><span>Liste</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#employer-nav" data-bs-toggle="collapse" href="#">
+          <i class="ri-user-2-line"></i><span>Employer</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="employer-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/creerEmployer">
+              <i class="bi bi-circle"></i><span>Creer</span>
+            </a>
+          </li>
+          <li>
+            <a href="/listAllEmployer">
+              <i class="bi bi-circle"></i><span>Liste</span>
+            </a>
+          </li>
+          <li>
+            <a href="/addEmployerToVoyage">
+              <i class="bi bi-circle"></i><span>Ajouter a un voyage</span>
+            </a>
+          </li>
+          <li>
+            <a href="/listAllTauxEmployerByNiveau">
+              <i class="bi bi-circle"></i><span>Gerer les salaires</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#client-nav" data-bs-toggle="collapse" href="#">
+          <i class="ri-user-line"></i><span>Client</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="client-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/createClient">
+              <i class="bi bi-circle"></i><span>Creer</span>
+            </a>
+          </li>
+          <li>
+            <a href="/acheterVoyage">
+              <i class="bi bi-circle"></i><span>Ajouter voyage dans le panier</span>
+            </a>
+          </li>
+          <li>
+            <a href="/validerPanier">
+              <i class="bi bi-circle"></i><span>Valider panier d'un client</span>
+            </a>
+          </li>
+          <li>
+            <a href="/statistiqueAchatClient">
+              <i class="bi bi-circle"></i><span>Statistique d'achat</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
 
-</aside><!-- End Sidebar-->
+  </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
 
