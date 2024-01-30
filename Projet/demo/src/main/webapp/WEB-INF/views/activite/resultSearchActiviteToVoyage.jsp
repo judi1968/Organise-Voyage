@@ -63,6 +63,7 @@
 
   </header><!-- End Header -->
    <!-- ======= Sidebar ======= -->
+   <!-- ======= Sidebar ======= -->
    <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -76,7 +77,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#activite-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Activite</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="ri-basketball-line"></i><span>Activite</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="activite-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -108,7 +109,7 @@
       </li><!-- End Components Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#bouquet-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Bouquet</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="ri-checkbox-multiple-blank-line"></i><span>Bouquet</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="bouquet-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -125,7 +126,7 @@
       </li><!-- End Components Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#voyage-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Voyage</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="ri-send-plane-fill"></i><span>Voyage</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="voyage-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -162,7 +163,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#fonction-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Fonction</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="ri-settings-line"></i><span>Fonction</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="fonction-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -174,7 +175,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#employer-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Employer</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="ri-user-2-line"></i><span>Employer</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="employer-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -201,7 +202,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#client-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Client</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="ri-user-line"></i><span>Client</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="client-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -211,7 +212,12 @@
           </li>
           <li>
             <a href="/acheterVoyage">
-              <i class="bi bi-circle"></i><span>Achat de voyage</span>
+              <i class="bi bi-circle"></i><span>Ajouter voyage dans le panier</span>
+            </a>
+          </li>
+          <li>
+            <a href="/validerPanier">
+              <i class="bi bi-circle"></i><span>Valider panier d'un client</span>
             </a>
           </li>
           <li>
@@ -224,7 +230,7 @@
     </ul>
 
   </aside><!-- End Sidebar-->
--- End Sidebar-->
+
 
   <main id="main" class="main">
 
