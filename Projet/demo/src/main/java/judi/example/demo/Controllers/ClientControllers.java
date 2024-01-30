@@ -2,6 +2,7 @@ package judi.example.demo.Controllers;
 
 
 
+import java.net.http.HttpResponse;
 import java.sql.Connection;
 import java.sql.Date;
 
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.websocket.server.PathParam;
 import judi.example.demo.Models.DataObject.ClientAchatVoyageDurre;
 import judi.example.demo.Models.DataObject.EmployeTaux;
 import judi.example.demo.Models.DatabaseConnection.ConnectionPostgres;
@@ -131,11 +134,12 @@ public class ClientControllers {
     }
 
     @GetMapping("/validerPanier") 
-    public String validerPanier(Model model){ 
+    public String validerPanier( Model model){ 
         try {
             Client[] clients = Client.getAllClient(null);
             
             model.addAttribute("clients", clients);
+
             return "client/validerPanier";
         } catch (Exception e) {
             // TODO: handle exception
@@ -144,7 +148,19 @@ public class ClientControllers {
         }    
     }
 
-    
- 
+    @GetMapping("/validePanierTraitement") 
+    public void validePanierTraitement(HttpServletResponse res,@RequestParam String id_client, Model model){ 
+        try {
+            int id_clienti = Integer.parseInt(id_client);
+            ClientAchatVoyageDurre.validePanier(id_clienti);
+            Client[] clients = Client.getAllClient(null);
+            
+            model.addAttribute("clients", clients);
+            res.sendRedirect("/validerPanier");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }    
+    } 
 }
 

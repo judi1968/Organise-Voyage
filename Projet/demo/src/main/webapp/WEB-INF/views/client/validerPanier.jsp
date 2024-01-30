@@ -1,5 +1,6 @@
 <%@ page import="judi.example.demo.Models.Objects.Client" %>
 <%@ page import="judi.example.demo.Models.Objects.VoyageDurre" %>
+<%@ page import="judi.example.demo.Models.DataObject.ClientAchatVoyageDurre" %>
 <%
 Client[] clients= (Client[])request.getAttribute("clients");
 
@@ -274,7 +275,7 @@ Client[] clients= (Client[])request.getAttribute("clients");
                                 Voir le panier <i class="bi bi-eye" style="color: rgb(255, 255, 255); font-size: x-large; "></i>
                               </button></a>
                               </td>
-                              <td><a class="btn-primary btn" href="/addActiviteInBouquet?id_client=<%= client.getId_client() %>" title="Valider le panier">Valider <i class="bi bi-cart-check" style="color: rgb(255, 255, 255); font-size: x-large;"></i></a></td>
+                              <td><a class="btn-primary btn" href="/validePanierTraitement?id_client=<%= client.getId_client() %>" title="Valider le panier">Valider <i class="bi bi-cart-check" style="color: rgb(255, 255, 255); font-size: x-large;"></i></a></td>
                             </tr>
                             <% } %>
                           </tbody>
@@ -315,19 +316,19 @@ Client[] clients= (Client[])request.getAttribute("clients");
                 </tr>
             </thead>
             <tbody>
-                <%// for (ClientAchatVoyageDurre clientAchatVoyageDurre2 : clientAchatVoyageDurre) { %>
+                <% for (ClientAchatVoyageDurre clientAchatVoyageDurre2 : ClientAchatVoyageDurre.getPanierClientByIdClient(client.getId_client())) { %>
                     <tr>
-                        <td><%// clientAchatVoyageDurre2.getDateAchat().getDateString() %> </td>
-                        <td><%// clientAchatVoyageDurre2.getVoyageDurre().getVoyage().getNom_voyage() %> </td>
-                        <td><%// clientAchatVoyageDurre2.getVoyageDurre().getDurre().getNom() %> </td>
+                        <td><%= clientAchatVoyageDurre2.getDateAchat().getDateString() %> </td>
+                        <td><%= clientAchatVoyageDurre2.getVoyageDurre().getVoyage().getNom_voyage() %> </td>
+                        <td><%= clientAchatVoyageDurre2.getVoyageDurre().getDurre().getNom() %> </td>
                     </tr>
-                <%// } %>
+                <% } %>
             </tbody>
             </table>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x" style="color: rgb(255, 255, 255); font-size: x-large;"></i> Fermer</button>
-          <a class="btn-primary btn" href="/addActiviteInBouquet?id_client=<%= client.getId_client() %>" title="Valider le panier">Valider <i class="bi bi-cart-check" style="color: rgb(255, 255, 255); font-size: x-large;"></i></a>
+          <a class="btn-primary btn" href="/validePanierTraitement?id_client=<%= client.getId_client() %>" title="Valider le panier">Valider <i class="bi bi-cart-check" style="color: rgb(255, 255, 255); font-size: x-large;"></i></a>
         </div>
       </div>
     </div>

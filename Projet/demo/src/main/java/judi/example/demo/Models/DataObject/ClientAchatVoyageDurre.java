@@ -78,7 +78,120 @@ public class ClientAchatVoyageDurre extends Client{
 		}
     }
 
+	
+	public static void validePanier(int idClient) throws Exception{
+        String query = " update vente_voyage_durre_client set etat_vente=10 where id_client_fk=? ";
+        int size = 0;
+        PreparedStatement statement = null;
+		ResultSet resultset= null;
+		boolean statementOpen = false;
+		boolean resultsetOpen = false;
+		boolean closeable = false;
+		Connection connection = null;
+		try {
+            if(connection==null) {
+                connection = ConnectionPostgres.connect("localhost",5432,"voyage","postgres","mdpprom15");
+				connection.setAutoCommit(false);
+                closeable = true;
+			}
+			
+			statement = connection.prepareStatement(query);
+			statement.setInt(1,idClient);
 
+			statementOpen = true;
+			
+			statement.executeUpdate();
+			
+			
+			statement.close();
+			
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			if(statementOpen) {
+				statement.close();
+			}
+			if(resultsetOpen) {
+				resultset.close();
+			}
+			if(closeable) {
+				connection.commit();
+				connection.close();
+			}
+		}
+    }
+
+	
+	public static ClientAchatVoyageDurre[] getPanierClientByIdClient(int idClient) throws Exception{
+        String query = "select * from v_vente_voyage_to_client_panier where id_client = ? ";
+        ClientAchatVoyageDurre[] clientAchatVoyageDurres;
+        int size = 0;
+        PreparedStatement statement = null;
+		ResultSet resultset= null;
+		boolean statementOpen = false;
+		boolean resultsetOpen = false;
+		boolean closeable = false;
+		Connection connection = null;
+		try {
+            if(connection==null) {
+                connection = ConnectionPostgres.connect("localhost",5432,"voyage","postgres","mdpprom15");
+				connection.setAutoCommit(false);
+                closeable = true;
+			}
+			
+			statement = connection.prepareStatement(query);
+			statement.setInt(1,idClient);
+
+			statementOpen = true;
+			
+			resultset =  statement.executeQuery();
+			
+			while(resultset.next()) {
+                size++;
+			}
+            if(size==0){
+                clientAchatVoyageDurres = new ClientAchatVoyageDurre[0];
+            }else{
+                clientAchatVoyageDurres = new ClientAchatVoyageDurre[size];
+                int i = 0;
+                resultset =  statement.executeQuery();
+                while(resultset.next()){
+                    clientAchatVoyageDurres[i] = new ClientAchatVoyageDurre();
+                    clientAchatVoyageDurres[i].setId_vente(resultset.getInt("id_vente"));
+                    int id_voyage_fk= resultset.getInt("id_voyage_fk");
+                    int id_durre_fk = resultset.getInt("id_durre_fk");
+                    Voyage v = Voyage.getVoyageById(id_voyage_fk, connection);
+                    Durre d = Durre.getDurreById(id_durre_fk, connection);
+                    VoyageDurre vd = new VoyageDurre();
+                    vd.setVoyage(v);
+                    vd.setDurre(d);                
+                    clientAchatVoyageDurres[i].setVoyageDurre(vd);
+                    clientAchatVoyageDurres[i].setId_client(resultset.getInt("id_client"));
+                    clientAchatVoyageDurres[i].setNom(resultset.getString("nom"));
+                    clientAchatVoyageDurres[i].setPrenom(resultset.getString("prenom"));
+                    clientAchatVoyageDurres[i].setGenre(Genre.getGenreById(resultset.getInt("id_genre_fk"),connection));
+                    clientAchatVoyageDurres[i].setDateAchat(new DateHeure(resultset.getString("date_vente")));
+                    i++;
+                }
+            }
+			statement.close();
+			
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			if(statementOpen) {
+				statement.close();
+			}
+			if(resultsetOpen) {
+				resultset.close();
+			}
+			if(closeable) {
+				connection.commit();
+				connection.close();
+			}
+		}
+        return clientAchatVoyageDurres;
+    }
 
     public static ClientAchatVoyageDurre[] getAllClientAchatVoyageDurres(Connection connection) throws Exception{
         String query = "select * from v_vente_voyage_to_client_acheter";
