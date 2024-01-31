@@ -177,7 +177,6 @@ public class Client {
     }
     
     public void modifyStock(Connection connection) throws Exception{
-        System.out.println("ici");
         String query = "select * from v_nombre_billet_activite_finale_client_panier where id_client_fk= ? ";
         Client client;
         client = new Client();
@@ -199,7 +198,6 @@ public class Client {
 			statementOpen = true;
                 resultset =  statement.executeQuery();
                 while(resultset.next()){
-                    System.out.println("ici");
                    Activite activite = new Activite();
                    activite.setId_activite(resultset.getInt("id_activite_fk"));
                     activite.addActiviteSortant(resultset.getInt("somme_nombre_activite"), connection); 

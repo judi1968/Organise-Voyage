@@ -244,10 +244,12 @@ String erreur = (String)request.getAttribute("erreur");
         <div class="row">
         <div class="col-lg-3"></div>
         <div class="pagetitle col-lg-6" style="margin-top: 5%; margin-left: 2%;">
-          <h1>Insertion voyage client</h1>
+          <% if(erreur.compareToIgnoreCase("none")!=0){ %>
+            <h1 style="color: red;">Stock insuffisant</h1>
+          <% } %>
           <nav>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item">Ajouter panier
+              <li class="breadcrumb-item">Liste de panier des clients</li>
             </ol>
           </nav>
         </div><!-- End Page Title -->
@@ -262,7 +264,7 @@ String erreur = (String)request.getAttribute("erreur");
                   <div class="col-lg-6">
                     <div class="card">
                       <div class="card-body">
-                        <h5 class="card-title">Liste des bouquets</h5>
+                        <h5 class="card-title">Liste des clients </h5>
           
                         <!-- Table with stripped rows -->
                         <table class="table table-striped">
@@ -309,9 +311,6 @@ String erreur = (String)request.getAttribute("erreur");
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <% if(erreur.compareToIgnoreCase("none")==0){ %>
-                <p>Stock insuffisant</p>
-          <% } %>
           <h5 class="modal-title">Panier du <span style="text-decoration: underline;"><%= client.getNom() %> <%= client.getPrenom() %></span></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
