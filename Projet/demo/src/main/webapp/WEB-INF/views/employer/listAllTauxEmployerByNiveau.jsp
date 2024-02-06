@@ -190,11 +190,11 @@
             <i class="bi bi-circle"></i><span>Ajouter a un voyage</span>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a href="/listAllTauxEmployerByNiveau">
             <i class="bi bi-circle"></i><span>Gerer les salaires</span>
           </a>
-        </li>
+        </li> -->
       </ul>
     </li>
     <li class="nav-item">
@@ -227,6 +227,8 @@
   </ul>
 
 </aside><!-- End Sidebar-->
+
+
 
   <main id="main" class="main">
 

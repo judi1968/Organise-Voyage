@@ -66,14 +66,14 @@ String date = (String)request.getAttribute("dateDonne");
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
-
+  
       <li class="nav-item">
         <a class="nav-link " href="/">
           <i class="bi bi-house"></i>
           <span>Accueil</span>
         </a>
       </li><!-- End Dashboard Nav -->
-
+  
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#activite-nav" data-bs-toggle="collapse" href="#">
           <i class="ri-basketball-line"></i><span>Activite</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -192,11 +192,11 @@ String date = (String)request.getAttribute("dateDonne");
               <i class="bi bi-circle"></i><span>Ajouter a un voyage</span>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a href="/listAllTauxEmployerByNiveau">
               <i class="bi bi-circle"></i><span>Gerer les salaires</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </li>
       <li class="nav-item">
@@ -227,10 +227,9 @@ String date = (String)request.getAttribute("dateDonne");
         </ul>
       </li>
     </ul>
-
+  
   </aside><!-- End Sidebar-->
-
-
+  
   <main id="main" class="main">
 
     <div class="pagetitle">

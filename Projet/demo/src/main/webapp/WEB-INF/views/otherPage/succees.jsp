@@ -228,7 +228,7 @@
     <section class="section dashboard">
       <div class="row">
         <center>
-            <h1 style="margin-top: 25%;">Voyage</h1>
+            <h1 style="margin-top: 25%;">Succees</h1>
         </center>
       </div>
     </section>
