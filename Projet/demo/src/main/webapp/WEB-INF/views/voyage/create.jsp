@@ -239,13 +239,6 @@
         <div class="col-lg-3"></div>
         <div class="pagetitle col-lg-6" style="margin-top: 5%; margin-left: 2%;">
           <h1>Creation de voyage</h1>
-          <nav>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item">Forms</li>
-              <li class="breadcrumb-item active">Elements</li>
-            </ol>
-          </nav>
         </div><!-- End Page Title -->
         <div class="col-lg-3"></div>
         </div>
