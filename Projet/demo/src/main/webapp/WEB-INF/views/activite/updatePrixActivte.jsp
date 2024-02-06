@@ -54,12 +54,6 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
 
   </header><!-- End Header -->
   <!-- ======= Sidebar ======= -->
@@ -246,7 +240,7 @@
       
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Creer activite</h5>
+                    <h5 class="card-title">Modifier le prix d'un activite</h5>
       
                     <!-- General Form Elements -->
                     <form method="post" action="/modifier_prix_traitement">

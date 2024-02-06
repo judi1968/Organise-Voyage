@@ -54,12 +54,7 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
+    
 
   </header><!-- End Header -->
    <!-- ======= Sidebar ======= -->
@@ -235,7 +230,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Bouquet</h1>
+      <h1>Activite</h1>
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
@@ -245,7 +240,7 @@
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Liste des bouquets</h5>
+                <h5 class="card-title">Liste des voyage qui appartient a un activite</h5>
   
                 <!-- Table with stripped rows -->
                 <table class="table table-striped">

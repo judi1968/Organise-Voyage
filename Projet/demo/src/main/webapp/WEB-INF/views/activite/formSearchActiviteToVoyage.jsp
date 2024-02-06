@@ -54,12 +54,7 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
+    
 
   </header><!-- End Header -->
    <!-- ======= Sidebar ======= -->
@@ -247,12 +242,12 @@
       
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Creer activite</h5>
+                    <h5 class="card-title">Rechercher un voyage qui utilise un activite</h5>
       
                     <!-- General Form Elements -->
                     <form method="post" action="/searchActiviteToBouquetTraitement">
                       <div class="row mb-3">
-                        <label for="inputText" class="col-sm-2 col-form-label">Nom d'activite</label>
+                        <label for="inputText" class="col-sm-2 col-form-label">Choisir un activite</label>
                         <div class="col-sm-10">
                             <select class="form-select" aria-label="Default select example" name="id_activite">
                                 <% for (Activite activite : activites) { %>

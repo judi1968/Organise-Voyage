@@ -232,7 +232,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Accueil</h1>
+      <h1>Actvite</h1>
     </div><!-- End Page Title -->
 
          <!-- <h1 style="margin-top: 25%">Créer</h1> -->
@@ -248,7 +248,7 @@
                     <form style="margin-top: 5%;" method="post" action="/addActiviteTraitement">
                       
                      <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Activité</label>
+                    <label class="col-sm-2 col-form-label">Activite</label>
                     <div class="col-sm-10">
                       <select class="form-select" aria-label="Default select example" name="id_activite">
                         <% for (Activite activite : activites) { %>
