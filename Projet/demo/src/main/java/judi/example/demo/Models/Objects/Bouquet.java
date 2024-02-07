@@ -134,13 +134,11 @@ public class Bouquet {
     public void addActivite(Activite activite,Connection connection) throws Exception{
         String query = "INSERT INTO \"public\".activite_bouquet\r\n" + //
                 "\t( id_activite_fk, id_bouquet_fk) VALUES ( ?, ? );";
-        int size = 0;
         PreparedStatement statement = null;
 		ResultSet resultset= null;
 		boolean statementOpen = false;
 		boolean resultsetOpen = false;
 		boolean closeable = false;
-        Bouquet bouquet = new Bouquet();
 		try {
             if(connection==null) {
                 connection = ConnectionPostgres.connect("localhost",5432,"voyage","postgres","mdpprom15");
