@@ -269,7 +269,7 @@
                   <div class="row mb-3">
                   <label class="col-sm-2 col-form-label"></label>
                   <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Acheter</button>
+                    <button type="submit" class="btn btn-primary">Vendre</button>
                   </div>
                 </div>
                         

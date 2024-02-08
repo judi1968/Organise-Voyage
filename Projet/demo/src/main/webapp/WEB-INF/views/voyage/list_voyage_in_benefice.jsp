@@ -266,8 +266,8 @@ ResultatVoyageDurrePrixBenefice[] resultatVoyageDurrePrixBenefices = (ResultatVo
                     <tr>
                       <th scope="col">Nom voyage</th>
                       <th scope="col">Duree</th>
-                      <th scope="col">Prix total des activitees</th>
-                      <th scope="col">Total des salaires</th>
+                      <th scope="col">Prix du voyage</th>
+                      <th scope="col">Total des depenses</th>
                       <th scope="col">Benefice</th>
   
   
